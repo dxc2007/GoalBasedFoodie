@@ -21479,22 +21479,6 @@
 
 	var _Results2 = _interopRequireDefault(_Results);
 
-	var _Type3 = __webpack_require__(502);
-
-	var _Type4 = _interopRequireDefault(_Type3);
-
-	var _Distance3 = __webpack_require__(503);
-
-	var _Distance4 = _interopRequireDefault(_Distance3);
-
-	var _Price3 = __webpack_require__(504);
-
-	var _Price4 = _interopRequireDefault(_Price3);
-
-	var _Results3 = __webpack_require__(505);
-
-	var _Results4 = _interopRequireDefault(_Results3);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21502,6 +21486,12 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import PChoice from './components/plan/Type.jsx';
+	// import PType from './components/plan/Type.jsx';
+	// import PDistance from './components/plan/Distance.jsx';
+	// import PPrice from './components/plan/Price.jsx';
+	// import PResults from './components/plan/search.jsx';
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -21535,11 +21525,8 @@
 	                    _react2.default.createElement(
 	                        _reactRouter.Route,
 	                        { path: '/plan' },
-	                        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Type4.default }),
-	                        _react2.default.createElement(_reactRouter.Route, { path: '/type', component: _Type4.default }),
-	                        _react2.default.createElement(_reactRouter.Route, { path: '/distance', component: _Distance4.default }),
-	                        _react2.default.createElement(_reactRouter.Route, { path: '/price', component: _Price4.default }),
-	                        _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _Results4.default })
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/upload' }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/decide' })
 	                    )
 	                )
 	            );
@@ -56812,6 +56799,14 @@
 
 	var _Results2 = _interopRequireDefault(_Results);
 
+	var _Type3 = __webpack_require__(506);
+
+	var _Type4 = _interopRequireDefault(_Type3);
+
+	var _search = __webpack_require__(507);
+
+	var _search2 = _interopRequireDefault(_search);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56860,7 +56855,7 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Jumbotron,
 	                { style: style },
-	                _react2.default.createElement(_Results2.default, null)
+	                _react2.default.createElement(_search2.default, null)
 	            );
 	        }
 	    }, {
@@ -57155,7 +57150,7 @@
 	            codes: {
 	                "Food Court": "4bf58dd8d48988d120951735",
 	                "Chinese": "4bf58dd8d48988d145941735",
-	                "Japanese ": "4bf58dd8d48988d111941735",
+	                "Japanese": "4bf58dd8d48988d111941735",
 	                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
 	                "Café": "4bf58dd8d48988d16d941735",
 	                "Buffet": "52e81612bcbc57f1066b79f4"
@@ -57533,15 +57528,6 @@
 	                }
 	            }, console.log("after: ", this.state.counter));
 	        }
-	    }, {
-	        key: 'dataLimiter',
-	        value: function dataLimiter() {
-	            console.log("before: ", this.state.counter);
-	            console.log("less than zero?", this.state.counter < 0);
-	            if (this.state.counter < 0) {
-	                this.setState({ counter: 0 }, console.log("after: ", this.state.counter));
-	            }
-	        }
 	    }]);
 
 	    return Type;
@@ -57550,7 +57536,11 @@
 	exports.default = Type;
 
 /***/ },
-/* 502 */
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57565,7 +57555,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(430);
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _reactBootstrap = __webpack_require__(174);
 
@@ -57586,15 +57578,12 @@
 	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
 
 	        _this.state = {
-	            title: "Type",
-	            types: ["Western", "Japanese", "Chinese", "Food Court", "Café", "Buffet"],
+	            title: "Select Options",
+	            types: ["3", "1 week", "1 month"],
 	            codes: {
-	                "Food Court": "4bf58dd8d48988d120951735",
-	                "Chinese": "4bf58dd8d48988d145941735",
-	                "Japanese ": "4bf58dd8d48988d111941735",
-	                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
-	                "Café": "4bf58dd8d48988d16d941735",
-	                "Buffet": "52e81612bcbc57f1066b79f4"
+	                "3": "3",
+	                "1 week": "7",
+	                "1 month": "30"
 	            }
 	        };
 	        return _this;
@@ -57612,195 +57601,56 @@
 	                    this.state.title
 	                ),
 	                _react2.default.createElement(
-	                    _reactBootstrap.ButtonGroup,
-	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
-	                    this.state.types.map(function (type) {
-	                        return _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { key: type, calue: type },
-	                            type
-	                        );
-	                    })
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'handleSubmit',
-	        value: function handleSubmit(e) {
-	            e.preventDefault();
-	            console.log(e.target.value);
-	            var cat = this.state.codes[e.target.value].slice(0);
-	            console.log(cat);
-	            this.props.setCategories.bind(this, cat);
-	            _reactRouter.browserHistory.push('/price');
-	        }
-	    }]);
-
-	    return Type;
-	}(_react2.default.Component);
-
-	exports.default = Type;
-
-/***/ },
-/* 503 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(430);
-
-	var _reactBootstrap = __webpack_require__(174);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Type = function (_React$Component) {
-	    _inherits(Type, _React$Component);
-
-	    function Type(props) {
-	        _classCallCheck(this, Type);
-
-	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
-
-	        _this.state = {
-	            title: "Distance",
-	            types: ["<500m", "<5k", "<25k", "doesn't matter"],
-	            codes: {
-	                "<500m": "500",
-	                "<5k": "5000",
-	                "<25k": "25000",
-	                "doesn't matter": "90000"
-	            }
-	        };
-	        return _this;
-	    }
-
-	    _createClass(Type, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
-	                _react2.default.createElement(
-	                    'h2',
+	                    'div',
 	                    null,
-	                    this.state.title
-	                ),
-	                _react2.default.createElement(
-	                    _reactBootstrap.ButtonGroup,
-	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
-	                    this.state.types.map(function (type) {
-	                        return _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { key: type, value: type },
-	                            type
-	                        );
-	                    })
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'handleSubmit',
-	        value: function handleSubmit(e) {
-	            e.preventDefault();
-	            console.log(e.target.value);
-	            var cat = this.state.codes[e.target.value].slice(0);
-	            console.log(cat);
-	            this.props.setRadius.bind(this, cat);
-	            _reactRouter.browserHistory.push('/results');
-	        }
-	    }]);
-
-	    return Type;
-	}(_react2.default.Component);
-
-	exports.default = Type;
-
-/***/ },
-/* 504 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(430);
-
-	var _reactBootstrap = __webpack_require__(174);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Type = function (_React$Component) {
-	    _inherits(Type, _React$Component);
-
-	    function Type(props) {
-	        _classCallCheck(this, Type);
-
-	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
-
-	        _this.state = {
-	            title: "Distance",
-	            types: ["$", "$$", "$$$", "doesn't matter"],
-	            codes: {
-	                "$": "1",
-	                "$$": "2",
-	                "$$$": "3",
-	                "doesn't matter": "4"
-	            }
-	        };
-	        return _this;
-	    }
-
-	    _createClass(Type, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
-	                _react2.default.createElement(
-	                    'h2',
-	                    null,
-	                    this.state.title
-	                ),
-	                _react2.default.createElement(
-	                    _reactBootstrap.ButtonGroup,
-	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
-	                    this.state.types.map(function (type) {
-	                        return _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { key: type, value: type },
-	                            type
-	                        );
-	                    })
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        'Days:',
+	                        _react2.default.createElement(
+	                            _reactBootstrap.ButtonGroup,
+	                            { bsSize: 'large', onClick: this.setDate.bind(this) },
+	                            this.state.types.map(function (type) {
+	                                return _react2.default.createElement(
+	                                    _reactBootstrap.Button,
+	                                    { key: type, value: type },
+	                                    type
+	                                );
+	                            })
+	                        ),
+	                        _react2.default.createElement(_reactBootstrap.FormControl, { type: 'number', min: '0', ref: 'days', placeholder: '0' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        '   ',
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Checkbox,
+	                            { readOnly: true },
+	                            'Breakfast'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        '   ',
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Checkbox,
+	                            { readOnly: true },
+	                            'Lunch'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        '   ',
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Checkbox,
+	                            { readOnly: true },
+	                            'Dinner'
+	                        )
+	                    ),
+	                    _react2.default.createElement(_reactBootstrap.Button, { onClick: this.handleSubmit.bind(this) })
 	                )
 	            );
 	        }
@@ -57812,8 +57662,39 @@
 	            var cat = this.state.codes[e.target.value].slice(0);
 	            console.log(cat);
 	            this.props.setPriceFilter.bind(this, cat);
-	            _reactRouter.browserHistory.push('/distance');
+	            browserHistory.push('/search');
 	        }
+	    }, {
+	        key: 'setDate',
+	        value: function setDate(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            console.log(this.state.codes);
+	            var days = this.state.codes[e.target.value].slice(0);
+	            console.log(days);
+	            _reactDom2.default.findDOMNode(this.refs.days).value = parseInt(days);
+	        }
+
+	        /*
+	            decrement() {
+	                let currentDays = parseInt(ReactDOM.findDOMNode(this.refs.days).value);
+	                console.log("before: ", currentDays);
+	                if  (currentDays <= 0) {
+	                    currentDays = 0;
+	                } else {
+	                    currentDays -= 1;
+	                }
+	                console.log("after: ", currentDays);
+	            }
+	        
+	            increment() {
+	                let currentDays = parseInt(ReactDOM.findDOMNode(this.refs.days).value);
+	                console.log("before: ", currentDays);
+	                currentDays += 1;
+	                console.log("after: ", currentDays);
+	            }
+	        */
+
 	    }]);
 
 	    return Type;
@@ -57822,7 +57703,7 @@
 	exports.default = Type;
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57862,86 +57743,73 @@
 	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
 
 	        _this.state = {
-	            counter: 0,
-	            data: { "meta": { "code": 200, "requestId": "581e92f69fb6b7228f5b4266" }, "response": { "venues": [{ "id": "4c73ca290e23b1f7743d21dc", "name": "Hong Sheng Kitchen | 鸿升小厨", "location": { "address": "#01-807, Blk 225 Jurong East St 24", "lat": 1.341575, "lng": 103.736279, "labeledLatLngs": [{ "label": "display", "lat": 1.341575, "lng": 103.736279 }], "distance": 127, "cc": "SG", "country": "Singapore", "formattedAddress": ["#01-807, Blk 225 Jurong East St 24", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 370, "usersCount": 84, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4b6d58b3f964a52018722ce3", "name": "Zai Shun Curry Fish Head Seafood 载顺小食（夜市）", "location": { "address": "Blk 253 Jurong East Street 24. #01-205", "lat": 1.34363638347244, "lng": 103.7371104857434, "labeledLatLngs": [{ "label": "display", "lat": 1.34363638347244, "lng": 103.7371104857434 }], "distance": 285, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 253 Jurong East Street 24. #01-205", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 1462, "usersCount": 745, "tipCount": 31 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 3, "summary": "3 people are here", "groups": [{ "type": "others", "name": "Other people here", "count": 3, "items": [] }] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4d1b46d46526a35d322c0e16", "name": "Jia Wang Fish Head Steamboat", "location": { "address": "Blk 225 Jurong East St 21", "lat": 1.341500513100762, "lng": 103.73708220111229, "labeledLatLngs": [{ "label": "display", "lat": 1.341500513100762, "lng": 103.73708220111229 }], "distance": 53, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 225 Jurong East St 21", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 31, "usersCount": 14, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c12d592a1010f479ea44918", "name": "Tiong Bahru Pau & Snack", "location": { "lat": 1.3437984387602537, "lng": 103.73814005038551, "labeledLatLngs": [{ "label": "display", "lat": 1.3437984387602537, "lng": 103.73814005038551 }], "distance": 316, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 520, "usersCount": 238, "tipCount": 4 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce34ba9bddcb1f75be57b89", "name": "303 Jurong Food House", "location": { "address": "303 Jurong East St 32", "lat": 1.3446108980250508, "lng": 103.73500046867517, "labeledLatLngs": [{ "label": "display", "lat": 1.3446108980250508, "lng": 103.73500046867517 }], "distance": 469, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["303 Jurong East St 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 4239, "usersCount": 556, "tipCount": 13 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce22758f8a4a143b9f6eebc", "name": "Hup Hong Chicken Rice", "location": { "address": "Yuhua Village Market & Food Centre", "crossStreet": "254 Jurong East St", "lat": 1.343489099557057, "lng": 103.7374725295498, "labeledLatLngs": [{ "label": "display", "lat": 1.343489099557057, "lng": 103.7374725295498 }], "distance": 269, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Yuhua Village Market & Food Centre (254 Jurong East St)", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 209, "usersCount": 40, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "52a45389498ef5c565fc4ad5", "name": "財鱼片、牛肉、鲜虾、什锦河粉", "location": { "lat": 1.343634, "lng": 103.737895, "labeledLatLngs": [{ "label": "display", "lat": 1.343634, "lng": 103.737895 }], "distance": 292, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 5, "usersCount": 5, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4f3f8757e4b0ac94162fc537", "name": "荣盛鱼头米粉", "location": { "lat": 1.343452, "lng": 103.737624, "labeledLatLngs": [{ "label": "display", "lat": 1.343452, "lng": 103.737624 }], "distance": 266, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 56, "usersCount": 15, "tipCount": 2 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "51c4304f498e73948a0d890e", "name": "Uncle Leong Seafood", "location": { "address": "262 Jurong East Street 24 #01-485", "lat": 1.3442037954522412, "lng": 103.7409006803799, "labeledLatLngs": [{ "label": "display", "lat": 1.3442037954522412, "lng": 103.7409006803799 }], "distance": 530, "postalCode": "600262", "cc": "SG", "country": "Singapore", "formattedAddress": ["262 Jurong East Street 24 #01-485", "600262", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 243, "usersCount": 191, "tipCount": 3 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c9d90bd8afca093da79f815", "name": "Nan Nan Curry", "location": { "address": "Blk 303 Jurong East Street 32", "lat": 1.344665, "lng": 103.73492, "labeledLatLngs": [{ "label": "display", "lat": 1.344665, "lng": 103.73492 }], "distance": 479, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 303 Jurong East Street 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 144, "usersCount": 46, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }], "confident": true } },
-	            sortedData: []
+	            entries: {},
+	            data: { "meta": { "code": 200, "requestId": "57ef09eb498e7cc5ea61d4c7" }, "response": { "venues": [{ "id": "4eaef4f4722e4efd614ddb80", "name": "MEAT Liquor", "contact": { "phone": "+442072244239", "formattedPhone": "+44 20 7224 4239", "twitter": "meatliquor" }, "location": { "address": "74 Welbeck St", "crossStreet": "at Henrietta Pl", "lat": 51.51546962015043, "lng": -0.1486051082611084, "labeledLatLngs": [{ "label": "display", "lat": 51.51546962015043, "lng": -0.1486051082611084 }], "distance": 1976, "postalCode": "W1G 0BA", "cc": "GB", "city": "Marylebone", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["74 Welbeck St (at Henrietta Pl)", "Marylebone", "Greater London", "W1G 0BA", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d16c941735", "name": "Burger Joint", "pluralName": "Burger Joints", "shortName": "Burgers", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/burger_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 13291, "usersCount": 8819, "tipCount": 475 }, "url": "http:\/\/www.meatliquor.com", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/meat-liquor\/4eaef4f4722e4efd614ddb80\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/4eaef4f4722e4efd614ddb80\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "4f966afbe4b03217df20a47e", "name": "MEATmarket", "contact": { "phone": "+442072404852", "formattedPhone": "+44 20 7240 4852", "twitter": "meatmarketuk" }, "location": { "address": "Jubilee Market Hall", "crossStreet": "Tavistock St", "lat": 51.51150689149124, "lng": -0.12177228927612305, "labeledLatLngs": [{ "label": "display", "lat": 51.51150689149124, "lng": -0.12177228927612305 }], "distance": 1012, "postalCode": "WC2E 8BD", "cc": "GB", "city": "Covent Garden", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["Jubilee Market Hall (Tavistock St)", "Covent Garden", "Greater London", "WC2E 8BD", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d16c941735", "name": "Burger Joint", "pluralName": "Burger Joints", "shortName": "Burgers", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/burger_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 5336, "usersCount": 2829, "tipCount": 158 }, "url": "http:\/\/www.themeatmarket.co.uk", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/meatmarket\/4f966afbe4b03217df20a47e\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/4f966afbe4b03217df20a47e\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "4bd34f149854d13a7f76fd4d", "name": "The Meat Co", "contact": { "phone": "+442087495914", "formattedPhone": "+44 20 8749 5914" }, "location": { "address": "Unit 1026, Westfield London", "crossStreet": "Ariel Way", "lat": 51.505998614887915, "lng": -0.21883275033106164, "labeledLatLngs": [{ "label": "display", "lat": 51.505998614887915, "lng": -0.21883275033106164 }], "distance": 6308, "postalCode": "W12 7GA", "cc": "GB", "city": "London", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["Unit 1026, Westfield London (Ariel Way)", "London", "Greater London", "W12 7GA", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d1cc941735", "name": "Steakhouse", "pluralName": "Steakhouses", "shortName": "Steakhouse", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/steakhouse_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 2291, "usersCount": 1683, "tipCount": 81 }, "url": "http:\/\/themeatco.com\/index.php\/westfield-london", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/the-meat-co\/4bd34f149854d13a7f76fd4d\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/4bd34f149854d13a7f76fd4d\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [{ "id": "556e51d6bd6a82902e2825b1" }], "hasPerk": false }, { "id": "50c35e21e4b08c3b59223478", "name": "MEAT Mission", "contact": { "phone": "+442077398212", "formattedPhone": "+44 20 7739 8212", "twitter": "meatmission" }, "location": { "address": "14-15 Hoxton Market", "lat": 51.52723559044546, "lng": -0.08248329162597656, "labeledLatLngs": [{ "label": "display", "lat": 51.52723559044546, "lng": -0.08248329162597656 }], "distance": 4126, "postalCode": "N1 6HG", "cc": "GB", "city": "Hoxton", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["14-15 Hoxton Market", "Hoxton", "Greater London", "N1 6HG", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d16c941735", "name": "Burger Joint", "pluralName": "Burger Joints", "shortName": "Burgers", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/burger_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 7321, "usersCount": 3857, "tipCount": 248 }, "url": "http:\/\/www.meatmission.com", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/meat-mission\/50c35e21e4b08c3b59223478\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/50c35e21e4b08c3b59223478\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "51be158c498ecc571208ea51", "name": "Meat Lover @ Filthy MacNasty's", "contact": { "phone": "+442078373133", "formattedPhone": "+44 20 7837 3133", "twitter": "meatloverldn" }, "location": { "address": "68 Amwell St", "crossStreet": "at Inglebert St", "lat": 51.52988209767982, "lng": -0.1103675365447998, "labeledLatLngs": [{ "label": "display", "lat": 51.52988209767982, "lng": -0.1103675365447998 }], "distance": 3203, "postalCode": "EC1R 1UU", "cc": "GB", "city": "Islington", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["68 Amwell St (at Inglebert St)", "Islington", "Greater London", "EC1R 1UU", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d1df931735", "name": "BBQ Joint", "pluralName": "BBQ Joints", "shortName": "BBQ", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/bbqalt_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 77, "usersCount": 56, "tipCount": 3 }, "url": "http:\/\/www.meatlover.info", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/meat-lover--filthy-macnastys\/51be158c498ecc571208ea51\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/51be158c498ecc571208ea51\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "56264862498e0abad6db6f23", "name": "MEAT Liquor", "contact": { "phone": "+442037110104", "formattedPhone": "+44 20 3711 0104", "twitter": "meatliquorn1", "facebook": "441618979329977", "facebookName": "MEATliquor N1" }, "location": { "address": "133B Upper St", "lat": 51.539167935300945, "lng": -0.10290837259382159, "labeledLatLngs": [{ "label": "display", "lat": 51.539167935300945, "lng": -0.10290837259382159 }], "distance": 4356, "postalCode": "N1 1QP", "cc": "GB", "city": "Islington", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["133B Upper St", "Islington", "Greater London", "N1 1QP", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d16c941735", "name": "Burger Joint", "pluralName": "Burger Joints", "shortName": "Burgers", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/burger_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 553, "usersCount": 368, "tipCount": 27 }, "url": "http:\/\/meatliquor.com\/n1\/", "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "53f73e55498e0d297edafbe3", "name": "Boarstall Meat Market", "contact": {}, "location": { "address": "Lower Marsh", "crossStreet": "Johanna Street", "lat": 51.50130947655674, "lng": -0.11454485084615397, "labeledLatLngs": [{ "label": "display", "lat": 51.50130947655674, "lng": -0.11454485084615397 }], "distance": 950, "cc": "GB", "city": "Lambeth North", "country": "United Kingdom", "formattedAddress": ["Lower Marsh (Johanna Street)", "Lambeth North", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d154941735", "name": "Cuban Restaurant", "pluralName": "Cuban Restaurants", "shortName": "Cuban", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/cuban_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 5, "usersCount": 4, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "55731730498e37ff69f9d6ad", "name": "Lobos Meat and Tapas", "contact": { "phone": "+442074075361", "formattedPhone": "+44 20 7407 5361", "twitter": "lobostapas", "facebook": "1604491549829769", "facebookUsername": "lobostapas", "facebookName": "Lobos Meat & Tapas" }, "location": { "address": "14 Borough High St", "lat": 51.505572997103, "lng": -0.0891077174403164, "labeledLatLngs": [{ "label": "display", "lat": 51.505572997103, "lng": -0.0891077174403164 }], "distance": 2700, "postalCode": "SE1 9QG", "cc": "GB", "city": "London", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["14 Borough High St", "London", "Greater London", "SE1 9QG", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d1db931735", "name": "Tapas Restaurant", "pluralName": "Tapas Restaurants", "shortName": "Tapas", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/tapas_", "suffix": ".png" }, "primary": true }], "verified": true, "stats": { "checkinsCount": 220, "usersCount": 195, "tipCount": 12 }, "url": "http:\/\/lobostapas.co.uk", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/lobos-meat-and-tapas\/55731730498e37ff69f9d6ad\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/55731730498e37ff69f9d6ad\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "venuePage": { "id": "130722984" }, "storeId": "", "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "4f0b659ae4b0cc066f384c66", "name": "Meat People", "contact": { "phone": "+442073595361", "formattedPhone": "+44 20 7359 5361", "twitter": "meatpeopleangel", "facebook": "204263782999509", "facebookName": "Meat People" }, "location": { "address": "4-6 Essex Rd", "lat": 51.5364593200558, "lng": -0.10170936584472656, "labeledLatLngs": [{ "label": "display", "lat": 51.5364593200558, "lng": -0.10170936584472656 }], "distance": 4117, "postalCode": "N1 8LN", "cc": "GB", "city": "London", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["4-6 Essex Rd", "London", "Greater London", "N1 8LN", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d1cc941735", "name": "Steakhouse", "pluralName": "Steakhouses", "shortName": "Steakhouse", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/steakhouse_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 618, "usersCount": 428, "tipCount": 34 }, "url": "http:\/\/meatpeople.co.uk", "hasMenu": true, "menu": { "type": "Menu", "label": "Menu", "anchor": "View Menu", "url": "https:\/\/foursquare.com\/v\/meat-people\/4f0b659ae4b0cc066f384c66\/menu", "mobileUrl": "https:\/\/foursquare.com\/v\/4f0b659ae4b0cc066f384c66\/device_menu" }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }, { "id": "4cb868b2bac93704ef7ddc7c", "name": "MEAT", "contact": {}, "location": { "address": "01. 0G.2 The Leathermarket, 11-13 Weston Street", "crossStreet": "Leathermarket Street", "lat": 51.50016764414252, "lng": -0.08471488952636719, "labeledLatLngs": [{ "label": "display", "lat": 51.50016764414252, "lng": -0.08471488952636719 }], "distance": 3012, "postalCode": "SE1 3ER", "cc": "GB", "city": "London", "state": "Greater London", "country": "United Kingdom", "formattedAddress": ["01. 0G.2 The Leathermarket, 11-13 Weston Street (Leathermarket Street)", "London", "Greater London", "SE1 3ER", "United Kingdom"] }, "categories": [{ "id": "4bf58dd8d48988d124941735", "name": "Office", "pluralName": "Offices", "shortName": "Office", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/building\/default_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 3, "usersCount": 3, "tipCount": 0 }, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1475283435", "venueChains": [], "hasPerk": false }] } }
 	        };
 	        return _this;
 	    }
 
 	    _createClass(Type, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            //this.props.callApi.bind(this);
-	            var sortedData = this.state.data.response.venues.map(function (venue) {
-	                return {
-	                    categories: venue.categories[0].shortName,
-	                    name: venue.name,
-	                    address: venue.location.formattedAddress,
-	                    distance: venue.location.distance,
-	                    checkin: venue.stats.checkinsCount
-	                };
-	            });
-	            this.setState({ sortedData: sortedData }, console.log(sortedData));
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var style = {};
 
 	            return _react2.default.createElement(
-	                'div',
-	                { ref: 'listOfResults' },
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    this.state.sortedData.slice(this.state.counter, this.state.counter + 1).map(function (venue) {
+	                    _react2.default.createElement(_reactBootstrap.FormControl, { placeholder: 'Start typing' }),
+	                    this.state.data.response.venues.map(function (venue) {
 	                        return _react2.default.createElement(
 	                            'div',
-	                            { key: venue.name, style: style },
+	                            { key: venue.id },
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
-	                                'Name: ',
-	                                venue.name
+	                                venue.categories[0].shortName
+	                            ),
+	                            _react2.default.createElement('img', { src: venue.categories[0].icon.prefix + venue.categories[0].icon.suffix }),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                venue.location.name
 	                            ),
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
-	                                'Distance: ',
-	                                venue.distance,
-	                                'm'
+	                                venue.location.formattedAddress
 	                            ),
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
-	                                'Address: ',
-	                                venue.address
+	                                venue.location.distance
 	                            ),
 	                            _react2.default.createElement(
 	                                'p',
 	                                null,
-	                                'Check In: ',
-	                                venue.checkin
+	                                venue.stats.checkinsCount
 	                            ),
 	                            _react2.default.createElement(
-	                                'p',
-	                                null,
-	                                'Categories: ',
-	                                venue.categories
+	                                _reactBootstrap.Button,
+	                                { onClick: _this2.addEntry.bind(_this2), ref: key },
+	                                'Add'
 	                            )
 	                        );
-	                    })
-	                ),
-	                _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { onClick: this.decrement.bind(this), ref: 'decrement' },
-	                    ' - '
-	                ),
-	                _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { onClick: this.increment.bind(this), ref: 'increment' },
-	                    ' + '
+	                    }),
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { onClick: this.search.bind(this), ref: 'getPlaces' },
+	                        ' Search '
+	                    ),
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { bsStyle: 'primary', onClick: this.decrement.bind(this), ref: 'decrement' },
+	                        ' I\'m ready! '
+	                    )
 	                )
 	            );
 	        }
@@ -57958,25 +57826,9 @@
 	            }, console.log("after: ", this.state.counter));
 	        }
 	    }, {
-	        key: 'increment',
-	        value: function increment() {
-	            console.log("before: ", this.state.counter);
-	            this.setState(function (prevState, props) {
-	                if (prevState.counter >= prevState.sortedData.length - 1) {
-	                    return { counter: 0 };
-	                } else {
-	                    return { counter: prevState.counter + 1 };
-	                }
-	            }, console.log("after: ", this.state.counter));
-	        }
-	    }, {
-	        key: 'dataLimiter',
-	        value: function dataLimiter() {
-	            console.log("before: ", this.state.counter);
-	            console.log("less than zero?", this.state.counter < 0);
-	            if (this.state.counter < 0) {
-	                this.setState({ counter: 0 }, console.log("after: ", this.state.counter));
-	            }
+	        key: 'search',
+	        value: function search() {
+	            //foursquare API call
 	        }
 	    }]);
 

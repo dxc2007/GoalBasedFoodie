@@ -15,8 +15,8 @@ export default class Choice extends React.Component {
     render() {
         return (
             <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                <Link to="/quickfix"><Button>I have my own places</Button></Link>
-                <Link to="/plan"><Button>Decide for me</Button></Link>
+                <Link to="/upload"><Button>I have my own places</Button></Link>
+                <Link to="/decide"><Button>Decide for me</Button></Link>
             </Col>
         )
 

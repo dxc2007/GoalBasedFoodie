@@ -27,7 +27,6 @@ export default class Type extends React.Component {
                 </ButtonGroup>
             </Col>
         )
-
     }
 
     handleSubmit(e) {
@@ -36,7 +35,6 @@ export default class Type extends React.Component {
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
         this.props.setPriceFilter.bind(this, cat);
-        browserHistory.push('/distance')
+        browserHistory.push('/distance');
     }
-
 }

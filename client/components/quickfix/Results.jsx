@@ -39,7 +39,7 @@ export default class Type extends React.Component {
         return (
             <div ref="listOfResults">
 
-
+                {/*Check out RBS Pager Pager, Pager.Item*/}
                     <div>
                         {this.state.sortedData.slice(this.state.counter, this.state.counter + 1).map(venue =>
                             (<div key={venue.name} style={style}>
@@ -83,15 +83,6 @@ export default class Type extends React.Component {
         },
             console.log("after: ", this.state.counter)
         );
-    }
-
-    dataLimiter() {
-        console.log("before: ", this.state.counter);
-        console.log("less than zero?", this.state.counter < 0);
-        if (this.state.counter < 0) {
-            this.setState({ counter: 0 },
-                console.log("after: ", this.state.counter))
-        }
     }
 
 }

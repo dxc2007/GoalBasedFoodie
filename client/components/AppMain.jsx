@@ -5,6 +5,8 @@ import Choice from './Choice.jsx';
 import Type from './quickfix/Type.jsx';
 import Distance from './quickfix/Distance.jsx';
 import Results from './quickfix/Results.jsx';
+import UType from './plan/upload/Type.jsx';
+import Search from './plan/upload/search.jsx';
 
 export default class AppMain extends React.Component {
   constructor(props) {
@@ -38,7 +40,7 @@ export default class AppMain extends React.Component {
 
     return (
           <Jumbotron style={style}>
-              <Results />
+              <Search />
           </Jumbotron>
     )
 
