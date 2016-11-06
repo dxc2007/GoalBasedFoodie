@@ -14,10 +14,10 @@ export default class Choice extends React.Component {
 
     render() {
         return (
-                <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                   <Link to="/quickfix"><Button>Quick Fix</Button></Link>
-                    <Link to="/plan"><Button>I need a Plan</Button></Link>
-                </Col>
+            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
+                <Link to="/quickfix"><Button>I have my own places</Button></Link>
+                <Link to="/plan"><Button>Decide for me</Button></Link>
+            </Col>
         )
 
     }

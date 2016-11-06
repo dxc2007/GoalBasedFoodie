@@ -21463,6 +21463,38 @@
 
 	var _Map2 = _interopRequireDefault(_Map);
 
+	var _Type = __webpack_require__(498);
+
+	var _Type2 = _interopRequireDefault(_Type);
+
+	var _Distance = __webpack_require__(499);
+
+	var _Distance2 = _interopRequireDefault(_Distance);
+
+	var _Price = __webpack_require__(500);
+
+	var _Price2 = _interopRequireDefault(_Price);
+
+	var _Results = __webpack_require__(501);
+
+	var _Results2 = _interopRequireDefault(_Results);
+
+	var _Type3 = __webpack_require__(502);
+
+	var _Type4 = _interopRequireDefault(_Type3);
+
+	var _Distance3 = __webpack_require__(503);
+
+	var _Distance4 = _interopRequireDefault(_Distance3);
+
+	var _Price3 = __webpack_require__(504);
+
+	var _Price4 = _interopRequireDefault(_Price3);
+
+	var _Results3 = __webpack_require__(505);
+
+	var _Results4 = _interopRequireDefault(_Results3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21491,7 +21523,24 @@
 	                    { path: '/', component: _Base2.default },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _AppMain2.default }),
 	                    _react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: '/jumbo', component: _Jumbo2.default })
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/jumbo', component: _Jumbo2.default }),
+	                    _react2.default.createElement(
+	                        _reactRouter.Route,
+	                        { path: '/quickfix' },
+	                        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Type2.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/distance', component: _Distance2.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/price', component: _Price2.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _Results2.default })
+	                    ),
+	                    _react2.default.createElement(
+	                        _reactRouter.Route,
+	                        { path: '/plan' },
+	                        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Type4.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/type', component: _Type4.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/distance', component: _Distance4.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/price', component: _Price4.default }),
+	                        _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _Results4.default })
+	                    )
 	                )
 	            );
 	        }
@@ -56751,6 +56800,18 @@
 
 	var _Choice2 = _interopRequireDefault(_Choice);
 
+	var _Type = __webpack_require__(498);
+
+	var _Type2 = _interopRequireDefault(_Type);
+
+	var _Distance = __webpack_require__(499);
+
+	var _Distance2 = _interopRequireDefault(_Distance);
+
+	var _Results = __webpack_require__(501);
+
+	var _Results2 = _interopRequireDefault(_Results);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56792,13 +56853,14 @@
 	                height: "300px",
 	                margin: "10vw",
 	                border: "1px solid grey",
-	                padding: "100px 1px"
+	                padding: "100px 1px",
+	                textAlign: 'center'
 	            };
 
 	            return _react2.default.createElement(
 	                _reactBootstrap.Jumbotron,
 	                { style: style },
-	                _react2.default.createElement(_Choice2.default, null)
+	                _react2.default.createElement(_Results2.default, null)
 	            );
 	        }
 	    }, {
@@ -56862,13 +56924,13 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
-	                { smOffset: 3, sm: 6, mdOffset: 4, md: 4 },
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '/quickfix' },
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Button,
-	                        { onClick: this.geolocate.bind(this) },
+	                        null,
 	                        'Quick Fix'
 	                    )
 	                ),
@@ -56877,8 +56939,8 @@
 	                    { to: '/plan' },
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Button,
-	                        { onClick: this.geolocate.bind(this) },
-	                        'Submit'
+	                        null,
+	                        'I need a Plan'
 	                    )
 	                )
 	            );
@@ -57050,6 +57112,878 @@
 	}(_react2.default.Component);
 
 	exports.default = Homepage;
+
+/***/ },
+/* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Type",
+	            types: ["Western", "Japanese", "Chinese", "Food Court", "Café", "Buffet"],
+	            codes: {
+	                "Food Court": "4bf58dd8d48988d120951735",
+	                "Chinese": "4bf58dd8d48988d145941735",
+	                "Japanese ": "4bf58dd8d48988d111941735",
+	                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
+	                "Café": "4bf58dd8d48988d16d941735",
+	                "Buffet": "52e81612bcbc57f1066b79f4"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, calue: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setCategories.bind(this, cat);
+	            _reactRouter.browserHistory.push('/price');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Distance",
+	            types: ["<500m", "<5k", "<25k", "doesn't matter"],
+	            codes: {
+	                "<500m": "500",
+	                "<5k": "5000",
+	                "<25k": "25000",
+	                "doesn't matter": "90000"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, value: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setRadius.bind(this, cat);
+	            _reactRouter.browserHistory.push('/results');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Distance",
+	            types: ["$", "$$", "$$$", "doesn't matter"],
+	            codes: {
+	                "$": "1",
+	                "$$": "2",
+	                "$$$": "3",
+	                "doesn't matter": "4"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, value: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setPriceFilter.bind(this, cat);
+	            _reactRouter.browserHistory.push('/distance');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 501 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            counter: 0,
+	            data: { "meta": { "code": 200, "requestId": "581e92f69fb6b7228f5b4266" }, "response": { "venues": [{ "id": "4c73ca290e23b1f7743d21dc", "name": "Hong Sheng Kitchen | 鸿升小厨", "location": { "address": "#01-807, Blk 225 Jurong East St 24", "lat": 1.341575, "lng": 103.736279, "labeledLatLngs": [{ "label": "display", "lat": 1.341575, "lng": 103.736279 }], "distance": 127, "cc": "SG", "country": "Singapore", "formattedAddress": ["#01-807, Blk 225 Jurong East St 24", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 370, "usersCount": 84, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4b6d58b3f964a52018722ce3", "name": "Zai Shun Curry Fish Head Seafood 载顺小食（夜市）", "location": { "address": "Blk 253 Jurong East Street 24. #01-205", "lat": 1.34363638347244, "lng": 103.7371104857434, "labeledLatLngs": [{ "label": "display", "lat": 1.34363638347244, "lng": 103.7371104857434 }], "distance": 285, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 253 Jurong East Street 24. #01-205", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 1462, "usersCount": 745, "tipCount": 31 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 3, "summary": "3 people are here", "groups": [{ "type": "others", "name": "Other people here", "count": 3, "items": [] }] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4d1b46d46526a35d322c0e16", "name": "Jia Wang Fish Head Steamboat", "location": { "address": "Blk 225 Jurong East St 21", "lat": 1.341500513100762, "lng": 103.73708220111229, "labeledLatLngs": [{ "label": "display", "lat": 1.341500513100762, "lng": 103.73708220111229 }], "distance": 53, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 225 Jurong East St 21", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 31, "usersCount": 14, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c12d592a1010f479ea44918", "name": "Tiong Bahru Pau & Snack", "location": { "lat": 1.3437984387602537, "lng": 103.73814005038551, "labeledLatLngs": [{ "label": "display", "lat": 1.3437984387602537, "lng": 103.73814005038551 }], "distance": 316, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 520, "usersCount": 238, "tipCount": 4 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce34ba9bddcb1f75be57b89", "name": "303 Jurong Food House", "location": { "address": "303 Jurong East St 32", "lat": 1.3446108980250508, "lng": 103.73500046867517, "labeledLatLngs": [{ "label": "display", "lat": 1.3446108980250508, "lng": 103.73500046867517 }], "distance": 469, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["303 Jurong East St 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 4239, "usersCount": 556, "tipCount": 13 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce22758f8a4a143b9f6eebc", "name": "Hup Hong Chicken Rice", "location": { "address": "Yuhua Village Market & Food Centre", "crossStreet": "254 Jurong East St", "lat": 1.343489099557057, "lng": 103.7374725295498, "labeledLatLngs": [{ "label": "display", "lat": 1.343489099557057, "lng": 103.7374725295498 }], "distance": 269, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Yuhua Village Market & Food Centre (254 Jurong East St)", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 209, "usersCount": 40, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "52a45389498ef5c565fc4ad5", "name": "財鱼片、牛肉、鲜虾、什锦河粉", "location": { "lat": 1.343634, "lng": 103.737895, "labeledLatLngs": [{ "label": "display", "lat": 1.343634, "lng": 103.737895 }], "distance": 292, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 5, "usersCount": 5, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4f3f8757e4b0ac94162fc537", "name": "荣盛鱼头米粉", "location": { "lat": 1.343452, "lng": 103.737624, "labeledLatLngs": [{ "label": "display", "lat": 1.343452, "lng": 103.737624 }], "distance": 266, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 56, "usersCount": 15, "tipCount": 2 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "51c4304f498e73948a0d890e", "name": "Uncle Leong Seafood", "location": { "address": "262 Jurong East Street 24 #01-485", "lat": 1.3442037954522412, "lng": 103.7409006803799, "labeledLatLngs": [{ "label": "display", "lat": 1.3442037954522412, "lng": 103.7409006803799 }], "distance": 530, "postalCode": "600262", "cc": "SG", "country": "Singapore", "formattedAddress": ["262 Jurong East Street 24 #01-485", "600262", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 243, "usersCount": 191, "tipCount": 3 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c9d90bd8afca093da79f815", "name": "Nan Nan Curry", "location": { "address": "Blk 303 Jurong East Street 32", "lat": 1.344665, "lng": 103.73492, "labeledLatLngs": [{ "label": "display", "lat": 1.344665, "lng": 103.73492 }], "distance": 479, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 303 Jurong East Street 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 144, "usersCount": 46, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }], "confident": true } },
+	            sortedData: []
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            //this.props.callApi.bind(this);
+	            var sortedData = this.state.data.response.venues.map(function (venue) {
+	                return {
+	                    categories: venue.categories[0].shortName,
+	                    name: venue.name,
+	                    address: venue.location.formattedAddress,
+	                    distance: venue.location.distance,
+	                    checkin: venue.stats.checkinsCount
+	                };
+	            });
+	            this.setState({ sortedData: sortedData }, console.log(sortedData));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var style = {};
+
+	            return _react2.default.createElement(
+	                'div',
+	                { ref: 'listOfResults' },
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    this.state.sortedData.slice(this.state.counter, this.state.counter + 1).map(function (venue) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { key: venue.name, style: style },
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Name: ',
+	                                venue.name
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Distance: ',
+	                                venue.distance,
+	                                'm'
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Address: ',
+	                                venue.address
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Check In: ',
+	                                venue.checkin
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Categories: ',
+	                                venue.categories
+	                            )
+	                        );
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { onClick: this.decrement.bind(this), ref: 'decrement' },
+	                    ' - '
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { onClick: this.increment.bind(this), ref: 'increment' },
+	                    ' + '
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'decrement',
+	        value: function decrement() {
+	            console.log("before: ", this.state.counter);
+	            this.setState(function (prevState, props) {
+	                if (prevState.counter <= 0) {
+	                    return { counter: prevState.sortedData.length - 1 };
+	                } else {
+	                    return { counter: prevState.counter - 1 };
+	                }
+	            }, console.log("after: ", this.state.counter));
+	        }
+	    }, {
+	        key: 'increment',
+	        value: function increment() {
+	            console.log("before: ", this.state.counter);
+	            this.setState(function (prevState, props) {
+	                if (prevState.counter >= prevState.sortedData.length - 1) {
+	                    return { counter: 0 };
+	                } else {
+	                    return { counter: prevState.counter + 1 };
+	                }
+	            }, console.log("after: ", this.state.counter));
+	        }
+	    }, {
+	        key: 'dataLimiter',
+	        value: function dataLimiter() {
+	            console.log("before: ", this.state.counter);
+	            console.log("less than zero?", this.state.counter < 0);
+	            if (this.state.counter < 0) {
+	                this.setState({ counter: 0 }, console.log("after: ", this.state.counter));
+	            }
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Type",
+	            types: ["Western", "Japanese", "Chinese", "Food Court", "Café", "Buffet"],
+	            codes: {
+	                "Food Court": "4bf58dd8d48988d120951735",
+	                "Chinese": "4bf58dd8d48988d145941735",
+	                "Japanese ": "4bf58dd8d48988d111941735",
+	                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
+	                "Café": "4bf58dd8d48988d16d941735",
+	                "Buffet": "52e81612bcbc57f1066b79f4"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, calue: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setCategories.bind(this, cat);
+	            _reactRouter.browserHistory.push('/price');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Distance",
+	            types: ["<500m", "<5k", "<25k", "doesn't matter"],
+	            codes: {
+	                "<500m": "500",
+	                "<5k": "5000",
+	                "<25k": "25000",
+	                "doesn't matter": "90000"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, value: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setRadius.bind(this, cat);
+	            _reactRouter.browserHistory.push('/results');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            title: "Distance",
+	            types: ["$", "$$", "$$$", "doesn't matter"],
+	            codes: {
+	                "$": "1",
+	                "$$": "2",
+	                "$$$": "3",
+	                "doesn't matter": "4"
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { smOffset: 3, sm: 6, mdOffset: 3, md: 6 },
+	                _react2.default.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.title
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.ButtonGroup,
+	                    { ref: 'type', bsSize: 'large', onClick: this.handleSubmit.bind(this) },
+	                    this.state.types.map(function (type) {
+	                        return _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { key: type, value: type },
+	                            type
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            e.preventDefault();
+	            console.log(e.target.value);
+	            var cat = this.state.codes[e.target.value].slice(0);
+	            console.log(cat);
+	            this.props.setPriceFilter.bind(this, cat);
+	            _reactRouter.browserHistory.push('/distance');
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactRouter = __webpack_require__(430);
+
+	var _reactBootstrap = __webpack_require__(174);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Type = function (_React$Component) {
+	    _inherits(Type, _React$Component);
+
+	    function Type(props) {
+	        _classCallCheck(this, Type);
+
+	        var _this = _possibleConstructorReturn(this, (Type.__proto__ || Object.getPrototypeOf(Type)).call(this, props));
+
+	        _this.state = {
+	            counter: 0,
+	            data: { "meta": { "code": 200, "requestId": "581e92f69fb6b7228f5b4266" }, "response": { "venues": [{ "id": "4c73ca290e23b1f7743d21dc", "name": "Hong Sheng Kitchen | 鸿升小厨", "location": { "address": "#01-807, Blk 225 Jurong East St 24", "lat": 1.341575, "lng": 103.736279, "labeledLatLngs": [{ "label": "display", "lat": 1.341575, "lng": 103.736279 }], "distance": 127, "cc": "SG", "country": "Singapore", "formattedAddress": ["#01-807, Blk 225 Jurong East St 24", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 370, "usersCount": 84, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4b6d58b3f964a52018722ce3", "name": "Zai Shun Curry Fish Head Seafood 载顺小食（夜市）", "location": { "address": "Blk 253 Jurong East Street 24. #01-205", "lat": 1.34363638347244, "lng": 103.7371104857434, "labeledLatLngs": [{ "label": "display", "lat": 1.34363638347244, "lng": 103.7371104857434 }], "distance": 285, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 253 Jurong East Street 24. #01-205", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 1462, "usersCount": 745, "tipCount": 31 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 3, "summary": "3 people are here", "groups": [{ "type": "others", "name": "Other people here", "count": 3, "items": [] }] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4d1b46d46526a35d322c0e16", "name": "Jia Wang Fish Head Steamboat", "location": { "address": "Blk 225 Jurong East St 21", "lat": 1.341500513100762, "lng": 103.73708220111229, "labeledLatLngs": [{ "label": "display", "lat": 1.341500513100762, "lng": 103.73708220111229 }], "distance": 53, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 225 Jurong East St 21", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 31, "usersCount": 14, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c12d592a1010f479ea44918", "name": "Tiong Bahru Pau & Snack", "location": { "lat": 1.3437984387602537, "lng": 103.73814005038551, "labeledLatLngs": [{ "label": "display", "lat": 1.3437984387602537, "lng": 103.73814005038551 }], "distance": 316, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 520, "usersCount": 238, "tipCount": 4 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce34ba9bddcb1f75be57b89", "name": "303 Jurong Food House", "location": { "address": "303 Jurong East St 32", "lat": 1.3446108980250508, "lng": 103.73500046867517, "labeledLatLngs": [{ "label": "display", "lat": 1.3446108980250508, "lng": 103.73500046867517 }], "distance": 469, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["303 Jurong East St 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d1e0931735", "name": "Coffee Shop", "pluralName": "Coffee Shops", "shortName": "Coffee Shop", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/coffeeshop_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 4239, "usersCount": 556, "tipCount": 13 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4ce22758f8a4a143b9f6eebc", "name": "Hup Hong Chicken Rice", "location": { "address": "Yuhua Village Market & Food Centre", "crossStreet": "254 Jurong East St", "lat": 1.343489099557057, "lng": 103.7374725295498, "labeledLatLngs": [{ "label": "display", "lat": 1.343489099557057, "lng": 103.7374725295498 }], "distance": 269, "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Yuhua Village Market & Food Centre (254 Jurong East St)", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 209, "usersCount": 40, "tipCount": 1 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "52a45389498ef5c565fc4ad5", "name": "財鱼片、牛肉、鲜虾、什锦河粉", "location": { "lat": 1.343634, "lng": 103.737895, "labeledLatLngs": [{ "label": "display", "lat": 1.343634, "lng": 103.737895 }], "distance": 292, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 5, "usersCount": 5, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4f3f8757e4b0ac94162fc537", "name": "荣盛鱼头米粉", "location": { "lat": 1.343452, "lng": 103.737624, "labeledLatLngs": [{ "label": "display", "lat": 1.343452, "lng": 103.737624 }], "distance": 266, "cc": "SG", "country": "Singapore", "formattedAddress": ["Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 56, "usersCount": 15, "tipCount": 2 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "51c4304f498e73948a0d890e", "name": "Uncle Leong Seafood", "location": { "address": "262 Jurong East Street 24 #01-485", "lat": 1.3442037954522412, "lng": 103.7409006803799, "labeledLatLngs": [{ "label": "display", "lat": 1.3442037954522412, "lng": 103.7409006803799 }], "distance": 530, "postalCode": "600262", "cc": "SG", "country": "Singapore", "formattedAddress": ["262 Jurong East Street 24 #01-485", "600262", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 243, "usersCount": 191, "tipCount": 3 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }, { "id": "4c9d90bd8afca093da79f815", "name": "Nan Nan Curry", "location": { "address": "Blk 303 Jurong East Street 32", "lat": 1.344665, "lng": 103.73492, "labeledLatLngs": [{ "label": "display", "lat": 1.344665, "lng": 103.73492 }], "distance": 479, "postalCode": "600303", "cc": "SG", "city": "Singapore", "country": "Singapore", "formattedAddress": ["Blk 303 Jurong East Street 32", "600303", "Singapore"] }, "categories": [{ "id": "4bf58dd8d48988d145941735", "name": "Chinese Restaurant", "pluralName": "Chinese Restaurants", "shortName": "Chinese", "icon": { "prefix": "https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/asian_", "suffix": ".png" }, "primary": true }], "verified": false, "stats": { "checkinsCount": 144, "usersCount": 46, "tipCount": 0 }, "allowMenuUrlEdit": true, "beenHere": { "unconfirmedCount": 0, "marked": false, "lastCheckinExpiredAt": 0 }, "specials": { "count": 0, "items": [] }, "hereNow": { "count": 0, "summary": "Nobody here", "groups": [] }, "referralId": "v-1478398710", "venueChains": [], "hasPerk": false }], "confident": true } },
+	            sortedData: []
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Type, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            //this.props.callApi.bind(this);
+	            var sortedData = this.state.data.response.venues.map(function (venue) {
+	                return {
+	                    categories: venue.categories[0].shortName,
+	                    name: venue.name,
+	                    address: venue.location.formattedAddress,
+	                    distance: venue.location.distance,
+	                    checkin: venue.stats.checkinsCount
+	                };
+	            });
+	            this.setState({ sortedData: sortedData }, console.log(sortedData));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var style = {};
+
+	            return _react2.default.createElement(
+	                'div',
+	                { ref: 'listOfResults' },
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    this.state.sortedData.slice(this.state.counter, this.state.counter + 1).map(function (venue) {
+	                        return _react2.default.createElement(
+	                            'div',
+	                            { key: venue.name, style: style },
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Name: ',
+	                                venue.name
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Distance: ',
+	                                venue.distance,
+	                                'm'
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Address: ',
+	                                venue.address
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Check In: ',
+	                                venue.checkin
+	                            ),
+	                            _react2.default.createElement(
+	                                'p',
+	                                null,
+	                                'Categories: ',
+	                                venue.categories
+	                            )
+	                        );
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { onClick: this.decrement.bind(this), ref: 'decrement' },
+	                    ' - '
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { onClick: this.increment.bind(this), ref: 'increment' },
+	                    ' + '
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'decrement',
+	        value: function decrement() {
+	            console.log("before: ", this.state.counter);
+	            this.setState(function (prevState, props) {
+	                if (prevState.counter <= 0) {
+	                    return { counter: prevState.sortedData.length - 1 };
+	                } else {
+	                    return { counter: prevState.counter - 1 };
+	                }
+	            }, console.log("after: ", this.state.counter));
+	        }
+	    }, {
+	        key: 'increment',
+	        value: function increment() {
+	            console.log("before: ", this.state.counter);
+	            this.setState(function (prevState, props) {
+	                if (prevState.counter >= prevState.sortedData.length - 1) {
+	                    return { counter: 0 };
+	                } else {
+	                    return { counter: prevState.counter + 1 };
+	                }
+	            }, console.log("after: ", this.state.counter));
+	        }
+	    }, {
+	        key: 'dataLimiter',
+	        value: function dataLimiter() {
+	            console.log("before: ", this.state.counter);
+	            console.log("less than zero?", this.state.counter < 0);
+	            if (this.state.counter < 0) {
+	                this.setState({ counter: 0 }, console.log("after: ", this.state.counter));
+	            }
+	        }
+	    }]);
+
+	    return Type;
+	}(_react2.default.Component);
+
+	exports.default = Type;
 
 /***/ }
 /******/ ]);

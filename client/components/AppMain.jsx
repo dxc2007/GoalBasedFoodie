@@ -2,6 +2,9 @@ import React from 'react';
 import {Jumbotron} from 'react-bootstrap';
 import Homepage from './Homepage.jsx';
 import Choice from './Choice.jsx';
+import Type from './quickfix/Type.jsx';
+import Distance from './quickfix/Distance.jsx';
+import Results from './quickfix/Results.jsx';
 
 export default class AppMain extends React.Component {
   constructor(props) {
@@ -29,12 +32,13 @@ export default class AppMain extends React.Component {
           height: "300px",
           margin: "10vw",
           border: "1px solid grey",
-          padding: "100px 1px"
+          padding: "100px 1px",
+          textAlign: 'center'
       }
 
     return (
           <Jumbotron style={style}>
-              <Choice />
+              <Results />
           </Jumbotron>
     )
 

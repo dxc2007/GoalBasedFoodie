@@ -7,15 +7,13 @@ export default class Type extends React.Component {
         super(props)
 
         this.state = {
-            title: "Type",
-            types: ["Western", "Japanese", "Chinese", "Food Court", "Café", "Buffet"],
+            title: "Distance",
+            types: ["<500m", "<5k", "<25k", "doesn't matter"],
             codes: {
-                "Food Court": "4bf58dd8d48988d120951735",
-                "Chinese": "4bf58dd8d48988d145941735",
-                "Japanese ": "4bf58dd8d48988d111941735",
-                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
-                "Café": "4bf58dd8d48988d16d941735",
-                "Buffet": "52e81612bcbc57f1066b79f4"
+                "<500m": "500",
+                "<5k": "5000",
+                "<25k": "25000",
+                "doesn't matter": "90000"
             }
         }
     }
@@ -25,7 +23,7 @@ export default class Type extends React.Component {
             <Col smOffset={3} sm={6} mdOffset={3} md={6}>
                 <h2>{this.state.title}</h2>
                 <ButtonGroup ref="type" bsSize="large" onClick={this.handleSubmit.bind(this)}>
-                    {this.state.types.map(type => <Button key={type} calue={type}>{type}</Button>)}
+                    {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}
                 </ButtonGroup>
             </Col>
         )
@@ -37,8 +35,8 @@ export default class Type extends React.Component {
         console.log(e.target.value);
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
-        this.props.setCategories.bind(this, cat);
-        browserHistory.push('/price');
+        this.props.setRadius.bind(this, cat);
+        browserHistory.push('/results')
     }
 
 }
