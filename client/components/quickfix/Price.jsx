@@ -1,13 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import {browserHistory} from 'react-router';
 import {Col, ButtonGroup, Button} from 'react-bootstrap';
 
-export default class Type extends React.Component {
+import {setPriceFilter} from '../../actions/fourSquareVenueSearchActions'
+
+@connect((store) => {
+    return {
+        price: store.search.priceFilter,
+    };
+})
+
+export default class Price extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            title: "Distance",
+            title: "Price",
             types: ["$", "$$", "$$$", "doesn't matter"],
             codes: {
                 "$": "1",
@@ -34,7 +44,7 @@ export default class Type extends React.Component {
         console.log(e.target.value);
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
-        this.props.setPriceFilter.bind(this, cat);
+        this.props.dispatch(setPriceFilter(cat));
         browserHistory.push('/distance');
     }
 }

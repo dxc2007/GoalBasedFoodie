@@ -1,6 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import {browserHistory} from 'react-router';
 import {Col, ButtonGroup, Button} from 'react-bootstrap';
+
+import {setCategories} from '../../actions/fourSquareVenueSearchActions';
+
+@connect((store) => {
+    return {
+        categories: store.search.categories,
+    };
+})
 
 export default class Type extends React.Component {
     constructor(props) {
@@ -25,11 +35,10 @@ export default class Type extends React.Component {
             <Col smOffset={3} sm={6} mdOffset={3} md={6}>
                 <h2>{this.state.title}</h2>
                 <ButtonGroup ref="type" bsSize="large" onClick={this.handleSubmit.bind(this)}>
-                    {this.state.types.map(type => <Button key={type} calue={type}>{type}</Button>)}
+                    {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}
                 </ButtonGroup>
             </Col>
         )
-
     }
 
     handleSubmit(e) {
@@ -37,7 +46,7 @@ export default class Type extends React.Component {
         console.log(e.target.value);
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
-        this.props.setCategories.bind(this, cat);
+        this.props.dispatch(setCategories(cat));
         browserHistory.push('/price');
     }
 

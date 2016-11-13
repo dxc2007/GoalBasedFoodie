@@ -2,20 +2,18 @@ import React from 'react';
 import {browserHistory} from 'react-router';
 import {Col, ButtonGroup, Button} from 'react-bootstrap';
 
-export default class Type extends React.Component {
+export default class DecideType extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
             title: "Type",
-            types: ["Western", "Japanese", "Chinese", "Food Court", "Café", "Buffet"],
+            types: ["Popular", "Cheap", "Try a variety", "Just Eat"],
             codes: {
-                "Food Court": "4bf58dd8d48988d120951735",
-                "Chinese": "4bf58dd8d48988d145941735",
-                "Japanese ": "4bf58dd8d48988d111941735",
-                "Western": "4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05",
-                "Café": "4bf58dd8d48988d16d941735",
-                "Buffet": "52e81612bcbc57f1066b79f4"
+                "Popular": "",
+                "Cheap": "",
+                "Try a variety": "",
+                "Just Eat": ""
             }
         }
     }

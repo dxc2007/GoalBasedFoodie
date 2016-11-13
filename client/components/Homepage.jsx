@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import { connect } from "react-redux"
+
 import {browserHistory} from 'react-router';
 import {Form, FormGroup,  Col, Button,  FormControl, Glyphicon} from 'react-bootstrap';
+
+import {setCoords} from '../actions/fourSquareVenueSearchActions'
+
+@connect((store) => {
+    return {
+        search: store.search.coords,
+    };
+})
 
 export default class Homepage extends React.Component {
     constructor(props) {
@@ -19,6 +28,7 @@ export default class Homepage extends React.Component {
     }
 
     render() {
+
         return (
             <Col smOffset={3} sm={6} mdOffset={4} md={4}>
                 <Form inline onSubmit={this.handleSubmit.bind(this)}>
@@ -30,7 +40,6 @@ export default class Homepage extends React.Component {
                 </Form>
             </Col>
         )
-
     }
 
     geolocate(e) {
@@ -42,7 +51,8 @@ export default class Homepage extends React.Component {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                this.setState({ geolocation: coords }, self.reverseGeoCode(geolocation));
+                this.props.dispatch(setCoords(coords));
+                self.reverseGeoCode(geolocation);
             });
         }
     }
@@ -50,48 +60,26 @@ export default class Homepage extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         console.log(ReactDOM.findDOMNode(this.refs.locationString).value);
-
-        let self = this;
-        $.ajax({
-            url: this.state.foursquare.mainLink,
-            data: {
-                "client_id": this.state.foursquare.cliendId,
-                "client_secret": this.state.foursquare.clientSecret,
-                v: this.state.foursquare.v,
-                ll: this.state.latlng.lat + "," + this.state.latlng.lng,
-                query: this.state.foursquare.query,
-                limit: this.state.foursquare.limit,
-                intent: this.state.foursquare.intent,
-                m: this.state.foursquare.m,
-            },
-            success: function(response) {
-                console.log(response);
-                self.setState({ data: response },
-                    browserHistory.push('/map')
-                );
-            },
-            error: function(xhr) {
-                console.log(xhr);
-            }
-        });
+        browserHistory.push("/choice");
     }
 
     autocompleteDone() {
         let self = this;
         this.state.autocomplete.addListener('place_changed', function() {
-            self.setState({ latlng: {
+            let coords = {
                     lat: self.state.autocomplete.getPlace().geometry.location.lat(),
                     lng: self.state.autocomplete.getPlace().geometry.location.lng()
                 }
-                },
-                this.props.setLatLng.bind(this, coords)
+            console.log("Raw Coords", coords);
+            self.props.dispatch(setCoords(coords));
+                }
+
             )
-        });
-    }
+        }
+
 
     reverseGeoCode(coords) {
         console.log("Raw Coords", coords);
-        this.props.setLatLng.bind(this, coords);
         let geocoder = new google.maps.Geocoder;
         let self = this;
         geocoder.geocode({location: coords}, function(results, status) {

@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Col, Checkbox, ButtonGroup, Button, FormControl} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
-export default class Type extends React.Component {
+import {Col, Checkbox, ButtonGroup, Button, FormControl} from 'react-bootstrap';
+import {setMeals} from '../../../actions/userActions';
+
+@connect((store) => {
+    return {
+        meals: store.user.meals,
+        days: store.user.days
+    }
+})
+
+export default class PUType extends React.Component {
     constructor(props) {
         super(props)
 
@@ -13,7 +24,10 @@ export default class Type extends React.Component {
                 "3": "3",
                 "1 week": "7",
                 "1 month": "30"
-            }
+            },
+            breakfast: false,
+            lunch: false,
+            dinner: false,
         }
     }
 
@@ -27,24 +41,25 @@ export default class Type extends React.Component {
                     <ButtonGroup bsSize="large" onClick={this.setDate.bind(this)}>
                         {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}
                     </ButtonGroup>
-                    {/*<Button onClick={this.increment.bind(this)}>*/}
-                    {/*-*/}
-                    {/*</Button>*/}
                     <FormControl type="number" min="0" ref="days" placeholder="0" />
-                    {/*<Button onClick={this.decrement.bind(this)}>*/}
-                    {/*+*/}
-                    {/*</Button>*/}
                     </div>
-                    <p>   <Checkbox readOnly>
+                    <p>
+                        <label><input type="checkbox" value="breakfast" ref="checkbox1" onClick={this.handleChange.bind(this)}/> This is the first checkbox </label><br/>
+                        <Checkbox ref="breakfast" >
                         Breakfast
-                    </Checkbox></p>
-                    <p>   <Checkbox readOnly>
+                        </Checkbox>
+                    </p>
+                    <p>
+                        <Checkbox ref="lunch" >
                         Lunch
-                    </Checkbox></p>
-                    <p>   <Checkbox readOnly>
+                        </Checkbox>
+                    </p>
+                    <p>
+                        <Checkbox ref="dinner" >
                         Dinner
-                    </Checkbox></p>
-                    <Button onClick={this.handleSubmit.bind(this)}></Button>
+                        </Checkbox>
+                    </p>
+                    <Button onClick={this.handleSubmit.bind(this)}>Submit</Button>
                 </div>
             </Col>
         )
@@ -52,11 +67,17 @@ export default class Type extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(e.target.value);
-        const cat = this.state.codes[e.target.value].slice(0);
-        console.log(cat);
-        this.props.setPriceFilter.bind(this, cat);
+        const meals = [this.refs.checkbox1.value];
+        const days = ReactDOM.findDOMNode(this.refs.days).value;
+        this.props.dispatch(setMeals(meals, days));
         browserHistory.push('/search');
+    }
+
+    handleChange(e) {
+        const value = e.target.value;
+        const setMeal = {};
+        setMeal[value] = true;
+        this.setState(setMeal, console.log(this.state.value));
     }
 
     setDate(e) {
@@ -67,25 +88,5 @@ export default class Type extends React.Component {
         console.log(days);
         ReactDOM.findDOMNode(this.refs.days).value = parseInt(days);
     }
-
-/*
-    decrement() {
-        let currentDays = parseInt(ReactDOM.findDOMNode(this.refs.days).value);
-        console.log("before: ", currentDays);
-        if  (currentDays <= 0) {
-            currentDays = 0;
-        } else {
-            currentDays -= 1;
-        }
-        console.log("after: ", currentDays);
-    }
-
-    increment() {
-        let currentDays = parseInt(ReactDOM.findDOMNode(this.refs.days).value);
-        console.log("before: ", currentDays);
-        currentDays += 1;
-        console.log("after: ", currentDays);
-    }
-*/
 
 }

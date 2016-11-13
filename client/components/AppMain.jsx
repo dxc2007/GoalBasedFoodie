@@ -6,7 +6,7 @@ import Type from './quickfix/Type.jsx';
 import Distance from './quickfix/Distance.jsx';
 import Results from './quickfix/Results.jsx';
 import UType from './plan/upload/Type.jsx';
-import Search from './plan/upload/search.jsx';
+import Search from './plan/upload/Search.jsx';
 
 export default class AppMain extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class AppMain extends React.Component {
 
     this.state = {
         data: {},
-      latlng: {},
+        latlng: {},
         query: "meat",
         limit: 10,
         foursquare: {
@@ -40,7 +40,7 @@ export default class AppMain extends React.Component {
 
     return (
           <Jumbotron style={style}>
-              <Search />
+              <Homepage />
           </Jumbotron>
     )
 

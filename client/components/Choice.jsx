@@ -3,14 +3,6 @@ import {Link} from 'react-router';
 import {Col, Button} from 'react-bootstrap';
 
 export default class Choice extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            geolocation: {},
-            autocomplete: {}
-        }
-    }
 
     render() {
         return (
@@ -19,7 +11,6 @@ export default class Choice extends React.Component {
                     <Link to="/plan"><Button>I need a Plan</Button></Link>
                 </Col>
         )
-
     }
 
 }

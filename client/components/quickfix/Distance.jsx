@@ -1,8 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import {browserHistory} from 'react-router';
 import {Col, ButtonGroup, Button} from 'react-bootstrap';
 
-export default class Type extends React.Component {
+import {setDistance} from '../../actions/fourSquareVenueSearchActions';
+
+@connect((store) => {
+    return {
+        distance: store.search.distance,
+    };
+})
+
+export default class Distance extends React.Component {
     constructor(props) {
         super(props)
 
@@ -27,7 +37,6 @@ export default class Type extends React.Component {
                 </ButtonGroup>
             </Col>
         )
-
     }
 
     handleSubmit(e) {
@@ -35,7 +44,7 @@ export default class Type extends React.Component {
         console.log(e.target.value);
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
-        this.props.setRadius.bind(this, cat);
+        this.props.dispatch(setDistance(cat));
         browserHistory.push('/results')
     }
 

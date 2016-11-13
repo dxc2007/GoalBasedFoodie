@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {Col, Button} from 'react-bootstrap';
 
-export default class Choice extends React.Component {
+export default class PChoice extends React.Component {
     constructor(props) {
         super(props)
 
@@ -19,7 +19,6 @@ export default class Choice extends React.Component {
                 <Link to="/decide"><Button>Decide for me</Button></Link>
             </Col>
         )
-
     }
 
 }
