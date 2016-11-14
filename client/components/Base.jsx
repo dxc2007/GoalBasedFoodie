@@ -5,8 +5,7 @@ export default class Base extends React.Component {
   render() {
 
     let style = {
-      background: '#cccccc url("../images/ny-filtered.jpg") no-repeat fixed 50%',
-      height: "100vh"
+      height: "100vh",
     }
 
     return (

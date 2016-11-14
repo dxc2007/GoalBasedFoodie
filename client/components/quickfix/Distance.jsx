@@ -45,7 +45,7 @@ export default class Distance extends React.Component {
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
         this.props.dispatch(setDistance(cat));
-        browserHistory.push('/results')
+        browserHistory.push('/quickfix/results')
     }
 
 }

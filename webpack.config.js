@@ -12,11 +12,15 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ["react", "es2015", "stage-0", "transform-object-rest-spread"],
+        presets: ["react", "es2015", "stage-2"],
         plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+        }
+      },
+      {
+        test: /\.scss$/,
+        loader: ['style', 'css', 'sass'],
       }
-    }
-  ],
+    ],
   },
   watch: true
 };

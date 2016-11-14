@@ -43,22 +43,9 @@ export default class PUType extends React.Component {
                     </ButtonGroup>
                     <FormControl type="number" min="0" ref="days" placeholder="0" />
                     </div>
-                    <p>
-                        <label><input type="checkbox" value="breakfast" ref="checkbox1" onClick={this.handleChange.bind(this)}/> This is the first checkbox </label><br/>
-                        <Checkbox ref="breakfast" >
-                        Breakfast
-                        </Checkbox>
-                    </p>
-                    <p>
-                        <Checkbox ref="lunch" >
-                        Lunch
-                        </Checkbox>
-                    </p>
-                    <p>
-                        <Checkbox ref="dinner" >
-                        Dinner
-                        </Checkbox>
-                    </p>
+                        <label><input type="checkbox" value="breakfast" ref="breakfast" onClick={this.handleChange.bind(this)}/> Breakfast </label><br/>
+                        <label><input type="checkbox" value="lunch" ref="lunch" onClick={this.handleChange.bind(this)}/> Lunch </label><br/>
+                        <label><input type="checkbox" value="dinner" ref="dinner" onClick={this.handleChange.bind(this)}/> Dinner </label><br/>
                     <Button onClick={this.handleSubmit.bind(this)}>Submit</Button>
                 </div>
             </Col>
@@ -67,17 +54,25 @@ export default class PUType extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const meals = [this.refs.checkbox1.value];
         const days = ReactDOM.findDOMNode(this.refs.days).value;
+        const meals = [];
+        for (const meal in this.state.setMeals) {
+            if (this.state.setMeals[meal]) {
+                console.log("Meal has been added", meal);
+                meals.push(meal);
+            }
+        }
         this.props.dispatch(setMeals(meals, days));
-        browserHistory.push('/search');
+        browserHistory.push('/upload/search');
     }
 
     handleChange(e) {
         const value = e.target.value;
-        const setMeal = {};
-        setMeal[value] = true;
-        this.setState(setMeal, console.log(this.state.value));
+        console.log(value);
+        const checked = ReactDOM.findDOMNode(this.refs[value]).checked;
+        const meals = Object.assign({}, this.state.setMeals);
+        meals[value] = checked;
+        this.setState({setMeals: meals})
     }
 
     setDate(e) {

@@ -1,8 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+
 import {browserHistory} from 'react-router';
-import {Col, ButtonGroup, Button, FormControl} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
 import _ from 'lodash';
+
+@connect((store) => {
+    return{
+        venues: store.user.venues,
+        days: store.user.days,
+        meals: store.user.meals,
+    }
+})
+
 
 export default class UploadResults extends React.Component {
     constructor(props) {
@@ -10,8 +20,7 @@ export default class UploadResults extends React.Component {
 
         this.state = {
             title: "Your plan",
-            days: 7,
-            meals: ["breakfast", "lunch", "dinner"],
+            noMeals: 0,
             entries: [[{id: "1879hhsgfa",
                 categories: "meat",
                 name: "Johnston's",
@@ -22,32 +31,43 @@ export default class UploadResults extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.setState({ data: ""});
+    componentWillMount() {
+        let noMeals = 0;
+        for (const i in this.props.meals) {
+            for (const j in this.props.days) {
+                noMeals++
+            }
+        }
+        this.setState({ noMeals: noMeals});
     }
 
     render() {
         const style = {
         }
 
+        const Meals = this.props.meals;
+        const Days = [];
+        for (let i = 0; i < this.props.days; i++) {
+            Days.push(i+1);
+        }
+        console.log(this.props.venues);
         return (
                 <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                    <div>
-                        <h2>{this.state.title}</h2>
-
-                        { this.state.entries.map(venue =>
-                                (<div key={venue.id}>
-
-                                    <p>{venue.location.name}</p>
-                                    <p>{venue.stats.checkinsCount}</p>
-                                </div>)
-
-                        )
-                        }
-                        <Button onClick={this.search.bind(this)} ref="getPlaces"> Search </Button>
-
-                        <Button bsStyle="primary" onClick={this.generatePlan.bind(this)} ref="decrement"> I'm ready! </Button>
-                    </div>
+                    <Grid>
+                    {
+                    Days.map(day =>
+                        (<Row key={day}>
+                            Day: {day}
+                            {Meals.map(meal =>
+                                (<Col sm={5 / Meals} md={5 / Meals} key={meal+day.toString()}>
+                                    <p>{meal}</p>
+                                    {this.props.venues[Math.floor(Math.random() * this.props.venues.length)][0].name}
+                                </Col>)
+                            )}
+                        </Row>)
+                    )
+                    }
+                    </Grid>
                 </Col>
         )
     }

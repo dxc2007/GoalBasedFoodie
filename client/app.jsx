@@ -1,7 +1,9 @@
 import React from 'react';
 import Base from './components/Base.jsx';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
+
 import Jumbo from './components/Experimental Features/Jumbo.jsx';
+import Homepage from './components/Homepage.jsx';
 import AppMain from './components/AppMain.jsx';
 import Choice from './components/Choice.jsx';
 import QfType from './components/quickfix/Type.jsx';
@@ -27,24 +29,25 @@ export default class App extends React.Component {
         <Provider store={store}>
             <Router history={browserHistory}>
                 <Route path="/" component={Base}>
-                    <IndexRoute component={AppMain} />
-                    <Route path="/choice" component={Choice} />
-                    <Route path="/jumbo" component={Jumbo} />
-                    <Route path="/quickfix" >
+                    <IndexRoute component={Homepage} />
+                    <Route component={AppMain} >
+                    <Route path="choice" component={Choice} />
+                    <Route path="jumbo" component={Jumbo} />
+                    <Route path="quickfix" >
                         <IndexRoute component={QfType}/>
-                        <Route path="/distance" component={QfDistance} />
-                        <Route path="/price" component={QfPrice} />
-                        <Route path="/results" component={QfResults} />
+                        <Route path="distance" component={QfDistance} />
+                        <Route path="price" component={QfPrice} />
+                        <Route path="results" component={QfResults} />
                     </Route>
-                    <Route path="/plan" component={PChoice}>
+                    <Route path="plan" component={PChoice}/>
+                    <Route path="upload">
+                        <IndexRoute component={PUType}/>
+                        <Route path="search" component={PUSearch} />
+                        <Route path="results" component={PUResults} />
                     </Route>
-                        <Route path="/upload">
-                            <IndexRoute component={PUType}/>
-                            <Route path="/search" component={PUSearch} />
-                            <Route path="/results" component={PUResults} />
-                        </Route>
-                        <Route path="/decide">
-                        </Route>
+                    <Route path="decide">
+                    </Route>
+                    </Route>
                 </Route>
             </Router>
         </Provider>

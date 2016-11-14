@@ -1,6 +1,59 @@
-
-
 body {
 	padding: 0 auto;
-	font: 14px Helvetica, sans-serif;
+	font: 14px "Futura", Helvetica, sans-serif;
+	color: #555555;
+	background-color: #ffdd00
+}
+
+.navbar-inverse .navbar-brand {
+	color: #333333;
+}
+
+.navbar-inverse .navbar-brand:hover {
+	color: #444444;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #333333;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+	color: #444444;
+}
+
+.navbar-toggle {
+	padding-top: 15px;
+	padding-right: 10px;
+}
+
+.navbar-toggle .collapsed:hover {
+	color: transparent;
+}
+
+.navbar-header>.navbar-toggle:focus, .navbar-header>.navbar-toggle:hover {
+	background-color: transparent;
+}
+
+.navbar-toggle {
+	border: 0;
+	margin: 0;
+}
+
+.collapsing ul li a, .in ul li a {
+	color: #efefef;
+}
+
+.centerComponent {
+	display: block;
+	text-align: center;
+}
+
+#homepage {
+	padding-top: 13%
+}
+
+button {
+	border: 2px solid black;
+	border-radius: 0;
+	minWidth: 50px;
 }

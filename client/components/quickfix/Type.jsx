@@ -47,7 +47,7 @@ export default class Type extends React.Component {
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
         this.props.dispatch(setCategories(cat));
-        browserHistory.push('/price');
+        browserHistory.push('/quickfix/price');
     }
 
 }

@@ -45,6 +45,6 @@ export default class Price extends React.Component {
         const cat = this.state.codes[e.target.value].slice(0);
         console.log(cat);
         this.props.dispatch(setPriceFilter(cat));
-        browserHistory.push('/distance');
+        browserHistory.push('/quickfix/distance');
     }
 }

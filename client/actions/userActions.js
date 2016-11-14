@@ -5,3 +5,9 @@ export function setMeals(meals, days) {
   }
 }
 
+export function setVenues(venues) {
+  return {
+    type: 'SET_VENUES',
+    payload: venues,
+  }
+}

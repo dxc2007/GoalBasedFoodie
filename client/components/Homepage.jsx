@@ -30,12 +30,15 @@ export default class Homepage extends React.Component {
     render() {
 
         return (
-            <Col smOffset={3} sm={6} mdOffset={4} md={4}>
+
+            <Col id="homepage" class="centerComponent" smOffset={2} sm={8} mdOffset={3} md={6}>
+                <h2>Where will your next meal be?</h2>
                 <Form inline onSubmit={this.handleSubmit.bind(this)}>
                     <FormGroup controlId="location">
                         <FormControl type="text" placeholder="Start typing" ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
                     </FormGroup>
                     <Button bsStyle="primary" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
+                    {'   '}
                     <Button type="submit">Submit</Button>
                 </Form>
             </Col>
@@ -51,7 +54,7 @@ export default class Homepage extends React.Component {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                this.props.dispatch(setCoords(coords));
+                self.props.dispatch(setCoords(geolocation));
                 self.reverseGeoCode(geolocation);
             });
         }

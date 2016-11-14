@@ -2,6 +2,7 @@ export default function reducer(state={
     id: null,
     meals: null,
     days: null,
+    venues: null,
   }, action) {
 
     switch (action.type) {
@@ -12,6 +13,13 @@ export default function reducer(state={
           days: action.payload.days,
         }
       }
+
+        case 'SET_VENUES': {
+            return {
+                ...state,
+                venues: action.payload
+            }
+        }
     }
 
     return state

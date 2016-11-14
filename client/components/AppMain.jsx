@@ -31,16 +31,15 @@ export default class AppMain extends React.Component {
   render() {
       const style = {
           width: "80vw",
-          height: "300px",
+          minHeight: "300px",
           margin: "10vw",
           border: "1px solid grey",
-          padding: "100px 1px",
           textAlign: 'center'
       }
 
     return (
           <Jumbotron style={style}>
-              <Homepage />
+              {this.props.children}
           </Jumbotron>
     )
 

@@ -3,8 +3,9 @@ import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 
 const style = {
   margin: 0,
-  backgroundColor: "rgba(0,0,0,0.1)",
-  border: 0
+  backgroundColor: "transparent",
+  border: 0,
+  color: "rgb(100, 100, 100)",
 }
 
 export default class Navigation extends React.Component {
@@ -13,25 +14,14 @@ export default class Navigation extends React.Component {
       <Navbar inverse style={style}>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">React-Bootstrap</a>
+              <a href="#">Goal Based Foodie</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="#">Link</NavItem>
-              <NavItem eventKey={2} href="#">Link</NavItem>
-              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
-              </NavDropdown>
-            </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">Link Right</NavItem>
-              <NavItem eventKey={2} href="#">Link Right</NavItem>
+              <NavItem eventKey={1} href="#">Log In</NavItem>
+              <NavItem eventKey={2} href="#">About</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
