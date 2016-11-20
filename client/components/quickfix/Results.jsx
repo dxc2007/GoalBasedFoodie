@@ -15,16 +15,13 @@ import {callOneOffApi} from '../../actions/fourSquareVenueSearchActions';
 })
 
 export default class Results extends React.Component {
-
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             counter: 0,
         }
-
     }
-
 
     componentWillMount() {
         this.props.dispatch(callOneOffApi())
@@ -33,7 +30,7 @@ export default class Results extends React.Component {
     render() {
         const style = {
 
-        }
+        };
         const { data, err } = this.props;
 
         console.log(data);
@@ -48,20 +45,20 @@ export default class Results extends React.Component {
             <div ref="listOfResults">
 
                 {/*Check out RBS Pager Pager, Pager.Item*/}
-                <div>
+                <div className="contentBox">
                     {data.slice(this.state.counter, this.state.counter + 1).map(venue =>
                         (<div key={venue.name} style={style}>
                             <p>Name: {venue.name}</p>
                             <p>Distance: {venue.location.distance}m</p>
-                            <p>Address: {venue.location.formattedAddress}</p>
+                            <p>Address: {venue.location.formattedAddress.map(part => <span>{part+" "}</span>)}</p>
                             <p>Check In: {venue.stats.checkinsCount}</p>
                             <p>Categories: {venue.categories[0].shortName}</p>
                         </div>)
                     )}
                 </div>
 
-                <Button onClick={this.decrement.bind(this)} ref="decrement"> - </Button>
-                <Button onClick={this.increment.bind(this)} ref="increment"> + </Button>
+                <Button onClick={this.decrement.bind(this)} ref="decrement"> Prev </Button>
+                <Button onClick={this.increment.bind(this)} ref="increment"> Next </Button>
             </div>
         )
     }

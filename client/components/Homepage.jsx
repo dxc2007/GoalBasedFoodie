@@ -15,7 +15,7 @@ import {setCoords} from '../actions/fourSquareVenueSearchActions'
 
 export default class Homepage extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             geolocation: {},
@@ -31,17 +31,14 @@ export default class Homepage extends React.Component {
 
         return (
 
-            <Col id="homepage" class="centerComponent" smOffset={2} sm={8} mdOffset={3} md={6}>
-                <h2>Where will your next meal be?</h2>
-                <Form inline onSubmit={this.handleSubmit.bind(this)}>
-                    <FormGroup controlId="location">
-                        <FormControl type="text" placeholder="Start typing" ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
+                <Form id="homepage" className="centerComponent" inline onSubmit={this.handleSubmit.bind(this)}>
+                    <FormGroup  bsSize="large">
+                        <FormControl id="locationForm" type="text" placeholder="Where will your next meal be?" ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
                     </FormGroup>
-                    <Button bsStyle="primary" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
+                    <Button bsStyle="primary" bsSize="large" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
                     {'   '}
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" bsSize="large">Submit</Button>
                 </Form>
-            </Col>
         )
     }
 
@@ -72,7 +69,7 @@ export default class Homepage extends React.Component {
             let coords = {
                     lat: self.state.autocomplete.getPlace().geometry.location.lat(),
                     lng: self.state.autocomplete.getPlace().geometry.location.lng()
-                }
+                };
             console.log("Raw Coords", coords);
             self.props.dispatch(setCoords(coords));
                 }
@@ -87,7 +84,7 @@ export default class Homepage extends React.Component {
         let self = this;
         geocoder.geocode({location: coords}, function(results, status) {
             if (status == 'OK') {
-                console.log(results)
+                console.log(results);
                 ReactDOM.findDOMNode(self.refs.locationString).value = results[0]["formatted_address"];
             } else {
                 console.log(status)

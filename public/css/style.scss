@@ -1,0 +1,136 @@
+$homepage-bg-img: url("../images/table-of-food.jpg");
+
+$color-navbar: #ffd839;
+$color-bg: #FFE439;
+$color-main-content: #FFEA64;
+
+$color-default-font: #333333;
+$color-dark-gray: #333333;
+$color-light-gray: #444444;
+$color-near-white: #efefef;
+
+#app {
+	padding: 0 auto;
+	font: 1em "Futura", Helvetica, sans-serif;
+	color: $color-default-font;
+	background-color: $color-bg;
+	min-height: 100vh;
+}
+
+.navbar {
+	margin: 0;
+	border: 0;
+	background-color: $color-navbar;
+	height: 5vh;
+}
+
+.navbar-inverse .navbar-brand {
+	color: $color-dark-gray;
+}
+
+.navbar-inverse .navbar-brand:hover {
+	color: $color-light-gray;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: $color-dark-gray;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+	color: $color-light-gray;
+}
+
+.navbar-toggle {
+	padding-top: 20px;
+	padding-right: 10px;
+}
+
+.navbar-toggle .collapsed:hover {
+	color: transparent;
+}
+
+.navbar-header>.navbar-toggle:focus, .navbar-header>.navbar-toggle:hover {
+	background-color: transparent;
+}
+
+.navbar-toggle {
+	border: 0;
+	margin: 0;
+}
+
+.collapsing ul li a, .in ul li a {
+	color: $color-near-white;
+}
+
+.centerComponent {
+	display: block;
+	text-align: center;
+}
+
+h1, h2, h3 {
+	padding: 0;
+	margin-top: 0
+}
+
+form {
+	padding: 0.5em;
+}
+
+#appHomepage {
+	background: $homepage-bg-img no-repeat center;
+	height: 90vh;
+}
+
+#homepage {
+	padding-top: 35vh;
+}
+
+#appMain {
+	min-height: 300px;
+	margin-top: 10vh;
+	text-align: center;
+}
+
+#locationForm {
+	min-width: 30vw;
+}
+
+.quickfixOptions {
+	padding-top: 15vh;
+}
+
+.choice {
+	padding-top: 20vh;
+}
+
+#numDays {
+	text-align: center;
+}
+
+#searchResults {
+	max-height: 100%;
+	text-align: left;
+	font-size: 0.8em;
+	font-family: "Droid Sans", sans-serif;
+	overflow: auto;
+}
+
+.searchResultUnit {
+	padding-bottom: 1em;
+}
+
+.contentBox {
+	font-size: 1.3em;
+	min-height: 150px;
+	width: 80vw;
+	background-color: $color-main-content;
+	padding: 1em 0;
+	display: block;
+	margin: auto;
+}
+
+#eatingPlanTable {
+	overflow: auto;
+	max-height: 100%;
+	background-color: $color-main-content;
+}

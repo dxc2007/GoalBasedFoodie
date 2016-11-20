@@ -2,4 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./client/app.jsx";
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+require('./public/css/style.scss');
+
+ReactDOM.render(<App />, document.getElementById('react-app'));

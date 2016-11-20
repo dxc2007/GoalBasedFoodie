@@ -1,16 +1,9 @@
 import React from 'react';
-import {Jumbotron} from 'react-bootstrap';
-import Homepage from './Homepage.jsx';
-import Choice from './Choice.jsx';
-import Type from './quickfix/Type.jsx';
-import Distance from './quickfix/Distance.jsx';
-import Results from './quickfix/Results.jsx';
-import UType from './plan/upload/Type.jsx';
-import Search from './plan/upload/Search.jsx';
+import {Col, Jumbotron} from 'react-bootstrap';
 
 export default class AppMain extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
         data: {},
@@ -29,18 +22,12 @@ export default class AppMain extends React.Component {
 }
 
   render() {
-      const style = {
-          width: "80vw",
-          minHeight: "300px",
-          margin: "10vw",
-          border: "1px solid grey",
-          textAlign: 'center'
-      }
+
 
     return (
-          <Jumbotron style={style}>
+        <Col id="appMain">
               {this.props.children}
-          </Jumbotron>
+        </Col>
     )
 
   }

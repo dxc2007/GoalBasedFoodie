@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 const style = {
   width: "500px",
   height: "300px"
-}
+};
 
 export default class Map extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       autocomplete: {},
@@ -72,7 +72,7 @@ componentDidMount() {
     } else {
       this.state.map.setCenter(this.state.place.geometry.location);
       this.state.map.setZoom(17);  // Why 17? Because it looks good.
-    };
+    }
   }
 
   setMarker(location) {

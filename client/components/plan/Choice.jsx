@@ -4,7 +4,7 @@ import {Col, Button} from 'react-bootstrap';
 
 export default class PChoice extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             geolocation: {},
@@ -14,9 +14,10 @@ export default class PChoice extends React.Component {
 
     render() {
         return (
-            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                <Link to="/upload"><Button>I have my own places</Button></Link>
-                <Link to="/decide"><Button>Decide for me</Button></Link>
+            <Col className="choice">
+                <Link to="/upload"><Button bsSize="large">I have my own places</Button></Link>
+                {' '}
+                <Link to="/decide"><Button bsSize="large">Decide for me</Button></Link>
             </Col>
         )
     }

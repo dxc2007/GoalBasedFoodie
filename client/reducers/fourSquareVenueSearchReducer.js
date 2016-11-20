@@ -5,10 +5,12 @@ export default function reducer(state={
   limit: 10,
   categories: "",
   query: "",
+  section: "food",
   distance: "",
   priceFilter: "",
   foursquare: {
     mainLink: "https://api.foursquare.com/v2/venues/search",
+    exploreLink: "https://api.foursquare.com/v2/venues/explore",
     clientId: "PGJIGCAHNKFUYF0SIAP51HC3NWKRQAXVB02BTPSDQJFWOHNP",
     clientSecret:"OWEQ325MR2JIVYMZB5Q2JVRE0AGGQFFVASXZVURJNM2QWLDD",
     v: 20160606,
@@ -39,6 +41,14 @@ export default function reducer(state={
       }
 
       case "CALL_API_REJECTED": {
+        return {...state, error: action.payload}
+      }
+
+      case "MULTIPLE_API_FULFILLED": {
+        return {...state, data: state.data.slice(0).concat(action.payload)}
+      }
+
+      case "MULTIPLE_API_REJECTED": {
         return {...state, error: action.payload}
       }
 

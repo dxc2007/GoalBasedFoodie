@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import ExportToGoogleCal from './ExportToGoogleCal.jsx';
 
-import {browserHistory} from 'react-router';
-import {Col, Grid, Row} from 'react-bootstrap';
-import _ from 'lodash';
+import {Col, Table, Button} from 'react-bootstrap';
 
 @connect((store) => {
     return{
@@ -16,11 +15,12 @@ import _ from 'lodash';
 
 export default class UploadResults extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Your plan",
             noMeals: 0,
+            key: 0,
             entries: [[{id: "1879hhsgfa",
                 categories: "meat",
                 name: "Johnston's",
@@ -35,41 +35,46 @@ export default class UploadResults extends React.Component {
         let noMeals = 0;
         for (const i in this.props.meals) {
             for (const j in this.props.days) {
-                noMeals++
+                noMeals++;
             }
         }
         this.setState({ noMeals: noMeals});
     }
 
-    render() {
-        const style = {
-        }
 
+    render() {
         const Meals = this.props.meals;
         const Days = [];
         for (let i = 0; i < this.props.days; i++) {
             Days.push(i+1);
         }
         console.log(this.props.venues);
-        return (
-                <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                    <Grid>
-                    {
-                    Days.map(day =>
-                        (<Row key={day}>
-                            Day: {day}
-                            {Meals.map(meal =>
-                                (<Col sm={5 / Meals} md={5 / Meals} key={meal+day.toString()}>
-                                    <p>{meal}</p>
-                                    {this.props.venues[Math.floor(Math.random() * this.props.venues.length)][0].name}
-                                </Col>)
-                            )}
-                        </Row>)
-                    )
-                    }
-                    </Grid>
+
+            return (
+                <Col className="contentBox">
+                    <h3>{this.state.title}</h3>
+                    <Button onClick={this.refresh.bind(this)}>Refresh</Button>
+                    <ExportToGoogleCal/>
+                    <Table id="eatingPlanTable" responsive striped hover>
+                        <thead>
+                        <tr>
+                            <th>Day</th>
+                            {Meals.map(meal => <th>{meal}</th>)}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {Days.map(day =>
+                            (<tr key={day}>
+                                <td>{day}</td>
+                                {Meals.map(meal =>
+                                    <td key={meal+day.toString()}>{this.props.venues[Math.floor(Math.random() * this.props.venues.length)][0].name}</td>
+                                )}
+                            </tr>)
+                        )}
+                        </tbody>
+                    </Table>
                 </Col>
-        )
+            )
     }
 
     generatePlan(e) {
@@ -101,8 +106,7 @@ export default class UploadResults extends React.Component {
         );
     }
 
-    search() {
-
+    refresh() {
+        this.setState({key: Math.random()});
     }
-
 }

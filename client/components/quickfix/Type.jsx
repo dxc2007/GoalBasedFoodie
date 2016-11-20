@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {browserHistory} from 'react-router';
-import {Col, ButtonGroup, Button} from 'react-bootstrap';
+import {Col, ButtonGroup, Button, ButtonToolbar} from 'react-bootstrap';
 
 import {setCategories} from '../../actions/fourSquareVenueSearchActions';
 
@@ -14,7 +14,7 @@ import {setCategories} from '../../actions/fourSquareVenueSearchActions';
 
 export default class Type extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Type",
@@ -32,7 +32,7 @@ export default class Type extends React.Component {
 
     render() {
         return (
-            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
+            <Col class="quickfixOptions">
                 <h2>{this.state.title}</h2>
                 <ButtonGroup ref="type" bsSize="large" onClick={this.handleSubmit.bind(this)}>
                     {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}

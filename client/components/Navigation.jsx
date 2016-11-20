@@ -1,17 +1,10 @@
 import React from 'react';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 
-const style = {
-  margin: 0,
-  backgroundColor: "transparent",
-  border: 0,
-  color: "rgb(100, 100, 100)",
-}
-
 export default class Navigation extends React.Component {
   render() {
     return (
-      <Navbar inverse style={style}>
+      <Navbar inverse staticTop>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#">Goal Based Foodie</a>

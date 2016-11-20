@@ -14,23 +14,23 @@ import {setDistance} from '../../actions/fourSquareVenueSearchActions';
 
 export default class Distance extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Distance",
-            types: ["<500m", "<5k", "<25k", "doesn't matter"],
+            types: ["<500m", "<5k", "<25k", "More"],
             codes: {
                 "<500m": "500",
                 "<5k": "5000",
                 "<25k": "25000",
-                "doesn't matter": "90000"
+                "More": "90000"
             }
         }
     }
 
     render() {
         return (
-            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
+            <Col class="quickfixOptions">
                 <h2>{this.state.title}</h2>
                 <ButtonGroup ref="type" bsSize="large" onClick={this.handleSubmit.bind(this)}>
                     {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}

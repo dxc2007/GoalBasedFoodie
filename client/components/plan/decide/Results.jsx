@@ -5,7 +5,7 @@ import {ButtonGroup, Button} from 'react-bootstrap';
 
 export default class Type extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             counter: 0,
@@ -34,7 +34,7 @@ export default class Type extends React.Component {
 
     render() {
         const style = {
-        }
+        };
 
         return (
             <div ref="listOfResults">

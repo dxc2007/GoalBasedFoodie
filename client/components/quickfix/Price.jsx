@@ -14,23 +14,23 @@ import {setPriceFilter} from '../../actions/fourSquareVenueSearchActions'
 
 export default class Price extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Price",
-            types: ["$", "$$", "$$$", "doesn't matter"],
+            types: ["$", "$$", "$$$", "More"],
             codes: {
                 "$": "1",
                 "$$": "2",
                 "$$$": "3",
-                "doesn't matter": "4"
+                "More": "4"
             }
         }
     }
 
     render() {
         return (
-            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
+            <Col class="quickfixOptions">
                 <h2>{this.state.title}</h2>
                 <ButtonGroup ref="type" bsSize="large" onClick={this.handleSubmit.bind(this)}>
                     {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}

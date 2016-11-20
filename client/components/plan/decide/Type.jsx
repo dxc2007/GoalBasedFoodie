@@ -4,7 +4,7 @@ import {Col, ButtonGroup, Button} from 'react-bootstrap';
 
 export default class DecideType extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Type",

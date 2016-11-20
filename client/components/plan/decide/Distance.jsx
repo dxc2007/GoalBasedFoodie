@@ -4,7 +4,7 @@ import {Col, ButtonGroup, Button} from 'react-bootstrap';
 
 export default class Type extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             title: "Distance",

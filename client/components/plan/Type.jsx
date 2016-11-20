@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 
-import {Col, Checkbox, ButtonGroup, Button, FormControl} from 'react-bootstrap';
-import {setMeals} from '../../../actions/userActions';
+import {Col, ButtonGroup, Button, FormGroup, FormControl, Form} from 'react-bootstrap';
+import {setMeals} from '../../actions/userActions';
 
 @connect((store) => {
     return {
@@ -15,13 +15,13 @@ import {setMeals} from '../../../actions/userActions';
 
 export default class PUType extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
-            title: "Select Options",
-            types: ["3", "1 week", "1 month"],
+            title: "How many days?",
+            types: ["3 days", "1 week", "1 month"],
             codes: {
-                "3": "3",
+                "3 days": "3",
                 "1 week": "7",
                 "1 month": "30"
             },
@@ -33,20 +33,23 @@ export default class PUType extends React.Component {
 
     render() {
         return (
-            <Col smOffset={3} sm={6} mdOffset={3} md={6}>
-                <h2>{this.state.title}</h2>
+            <Col>
+                <h3>{this.state.title}</h3>
                 <div>
-                    <div>
-                    Days:
-                    <ButtonGroup bsSize="large" onClick={this.setDate.bind(this)}>
+                    <ButtonGroup bsSize="Small" onClick={this.setDate.bind(this)}>
                         {this.state.types.map(type => <Button key={type} value={type}>{type}</Button>)}
                     </ButtonGroup>
-                    <FormControl type="number" min="0" ref="days" placeholder="0" />
-                    </div>
-                        <label><input type="checkbox" value="breakfast" ref="breakfast" onClick={this.handleChange.bind(this)}/> Breakfast </label><br/>
-                        <label><input type="checkbox" value="lunch" ref="lunch" onClick={this.handleChange.bind(this)}/> Lunch </label><br/>
-                        <label><input type="checkbox" value="dinner" ref="dinner" onClick={this.handleChange.bind(this)}/> Dinner </label><br/>
-                    <Button onClick={this.handleSubmit.bind(this)}>Submit</Button>
+                    <Form inline>
+                        <FormGroup bsSize="large"> 
+                            <FormControl id="numDays" type="number" min="0" ref="days" placeholder="0" />
+                        </FormGroup>
+                    </Form>
+                    <label><input type="checkbox" value="breakfast" ref="breakfast" onClick={this.handleChange.bind(this)}/> Breakfast </label>
+                    {' '}
+                    <label><input type="checkbox" value="lunch" ref="lunch" onClick={this.handleChange.bind(this)}/> Lunch </label>
+                    {' '}
+                    <label><input type="checkbox" value="dinner" ref="dinner" onClick={this.handleChange.bind(this)}/> Dinner </label><br/>
+                    <Button bsStyle="primary" bsSize='lg' onClick={this.handleSubmit.bind(this)}>Submit</Button>
                 </div>
             </Col>
         )
@@ -63,7 +66,7 @@ export default class PUType extends React.Component {
             }
         }
         this.props.dispatch(setMeals(meals, days));
-        browserHistory.push('/upload/search');
+        browserHistory.push('/plan/search');
     }
 
     handleChange(e) {
