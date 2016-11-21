@@ -9,6 +9,6 @@ Tech used: React + Redux, ES6, Bootstrap, SASS
 APIs: Foursquare, Google
 
 Future work:
-1. Embeded Directions from your location to your chosen venue for "Quick fix" (Google Maps)
-2. Export "Eating plan" to your Calender (Coronofy)
-3. Upload currently unlisted venues so that you can include them in your plan (Foursquare OAuth2)
+  1. Embeded Directions from your location to your chosen venue for "Quick fix" (Google Maps)
+  2. Export "Eating plan" to your Calender (Coronofy)
+  3. Upload currently unlisted venues so that you can include them in your plan (Foursquare OAuth2)
