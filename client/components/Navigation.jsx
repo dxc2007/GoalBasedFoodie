@@ -7,7 +7,7 @@ export default class Navigation extends React.Component {
       <Navbar inverse staticTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Goal Based Foodie</a>
+              <a href="/">Goal Based Foodie</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

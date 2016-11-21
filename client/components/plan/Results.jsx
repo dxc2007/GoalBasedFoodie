@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ExportToGoogleCal from './ExportToGoogleCal.jsx';
+import ExportToGoogleCal from '../Experimental Features/ExportToGoogleCal.jsx';
 
 import {Col, Table, Button} from 'react-bootstrap';
 

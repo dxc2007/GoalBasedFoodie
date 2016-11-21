@@ -19,8 +19,14 @@ export default class Homepage extends React.Component {
 
         this.state = {
             geolocation: {},
-            autocomplete: {}
+            autocomplete: {},
+            messages: {geolocating: "Geolocating..."},
+            warnings: {
+                invalidLocation: "Oops... Please select a valid location.",
+                noGeolocator: "Geolocator not available. Please key in manually."
+            }
         }
+
     }
 
     componentDidMount() {
@@ -30,7 +36,7 @@ export default class Homepage extends React.Component {
     render() {
 
         return (
-
+            <Col>
                 <Form id="homepage" className="centerComponent" inline onSubmit={this.handleSubmit.bind(this)}>
                     <FormGroup  bsSize="large">
                         <FormControl id="locationForm" type="text" placeholder="Where will your next meal be?" ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
@@ -39,14 +45,25 @@ export default class Homepage extends React.Component {
                     {'   '}
                     <Button type="submit" bsSize="large">Submit</Button>
                 </Form>
+            </Col>
         )
     }
 
     geolocate(e) {
         e.preventDefault();
         let self = this;
+        const noGeolocate = self.state.warnings.noGeolocator;
+        let locationStringPlaceholder = ReactDOM.findDOMNode(self.refs.locationString);
+
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            locationStringPlaceholder.placeholder = self.state.messages.geolocating;
+            navigator.geolocation.getCurrentPosition(function(position, error) {
+                if (error) {
+                    console.log("Geolocation error");
+                    locationStringPlaceholder.placeholder = noGeolocate;
+                } else {
+
+                }
                 var geolocation = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
@@ -54,13 +71,21 @@ export default class Homepage extends React.Component {
                 self.props.dispatch(setCoords(geolocation));
                 self.reverseGeoCode(geolocation);
             });
+        } else {
+            locationStringPlaceholder.placeholder = noGeolocate;
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        const geolocation = this.props.search;
         console.log(ReactDOM.findDOMNode(this.refs.locationString).value);
-        browserHistory.push("/choice");
+        console.log(Object.keys(geolocation).length);
+        if (Object.keys(geolocation).length == 0) {
+            ReactDOM.findDOMNode(this.refs.locationString).placeholder = this.state.warnings.invalidLocation;
+        } else {
+            browserHistory.push("/choice");
+        }
     }
 
     autocompleteDone() {
@@ -77,7 +102,6 @@ export default class Homepage extends React.Component {
             )
         }
 
-
     reverseGeoCode(coords) {
         console.log("Raw Coords", coords);
         let geocoder = new google.maps.Geocoder;
@@ -91,4 +115,5 @@ export default class Homepage extends React.Component {
             }
         });
     }
+
 }

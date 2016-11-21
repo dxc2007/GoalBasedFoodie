@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
-import {browserHistory} from 'react-router';
-import {ButtonGroup, Button} from 'react-bootstrap';
+import {Link} from 'react-router';
+import {Button} from 'react-bootstrap';
 
 import {callOneOffApi} from '../../actions/fourSquareVenueSearchActions';
 
 @connect((store) => {
     return {
         data: store.search.data,
-        err: store.search.err
+        err: store.search.err,
+        coords: store.search.coords
     };
 })
 
@@ -19,7 +19,7 @@ export default class Results extends React.Component {
         super(props);
 
         this.state = {
-            counter: 0,
+            counter: 0
         }
     }
 
@@ -53,6 +53,7 @@ export default class Results extends React.Component {
                             <p>Address: {venue.location.formattedAddress.map(part => <span>{part+" "}</span>)}</p>
                             <p>Check In: {venue.stats.checkinsCount}</p>
                             <p>Categories: {venue.categories[0].shortName}</p>
+                            <p>Directions: <Link to={this.generateGoogleDirectionsURL(venue.location.formattedAddress)} target="_blank" ><Button>Google Maps</Button></Link></p>
                         </div>)
                     )}
                 </div>
@@ -90,6 +91,10 @@ export default class Results extends React.Component {
         },
             console.log("after: ", this.state.counter)
         );
+    }
+
+    generateGoogleDirectionsURL(venueAddress) {
+    return ("https://www.google.com/maps/dir/" + this.props.coords.lat + "," + this.props.coords.lng + "/" + venueAddress + "/");
     }
 
 }

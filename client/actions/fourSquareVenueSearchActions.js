@@ -90,28 +90,6 @@ export function callMultipleApi() {
     m: ApiStuff.foursquare.m,
   };
 
-  // function legitFood() {
-  //   params.categoryId = "4bf58dd8d48988d145941735,4bf58dd8d48988d111941735,4bf58dd8d48988d14e941735,4bf58dd8d48988d10c941735,52e81612bcbc57f1066b7a05";
-  //   axios.get("https://api.foursquare.com/v2/venues/search", { params });
-  //   console.log(params);
-  // }
-  //
-  // function randomFood() {
-  //   params.categoryId = "4bf58dd8d48988d120951735,4bf58dd8d48988d16d941735,52e81612bcbc57f1066b79f4";
-  //   axios.get("https://api.foursquare.com/v2/venues/search", { params });
-  //   console.log(params);
-  // }
-
-  // return function(dispatch) {
-  //   axios.all([legitFood(), randomFood()])
-  //       .then(axios.spread(function(legitfood, randomfood) {
-  //         dispatch({type: 'MULTIPLE_API_FULFILLED', payload: legitfood.data.response.venues});
-  //         dispatch({type: 'MULTIPLE_API_FULFILLED', payload: randomfood.data.response.venues});
-  //       }))
-  //       .catch((err) => {
-  //         dispatch({type: 'MULTIPLE_API_REJECTED', payload: err})
-  //       })
-  // }
   console.log(params);
   return function(dispatch) {
     axios.get("https://api.foursquare.com/v2/venues/explore", { params })

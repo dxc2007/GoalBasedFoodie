@@ -13,6 +13,7 @@ export default class ExportToGoogleCal extends React.Component {
             SCOPES: ["https://www.googleapis.com/auth/calendar"],
             clientId: "5J3x2qBTH0_rwLsxhDKN515iJtHGB2J6",
             clientSecret: "VJL5KQXLTl3nj4xYrx-64GElWp5ZO_45VQl003Nu6ToemQo_CUEy0bQJGIMJUI-SaD1raq1BAJ1eeEFb0B9PpQ",
+            title: "TBD"
         };
     }
 
@@ -22,7 +23,7 @@ export default class ExportToGoogleCal extends React.Component {
 
     render () {
         return <Button id="authorize-button" onClick={this.reqAuth.bind(this)}>
-            Authorize
+            {this.state.title}
         </Button>
     }
 

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "v4.4.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --use-strict server.js"
+    "start": "nodemon --use-strict server.js & webpack"
   },
   "author": "Xiaochen Du <duxiaochen1996@outlook.com> (http://dxc2007.github.io/)",
   "license": "ISC",

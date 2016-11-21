@@ -25,9 +25,11 @@ export default class PUType extends React.Component {
                 "1 week": "7",
                 "1 month": "30"
             },
-            breakfast: false,
-            lunch: false,
-            dinner: false,
+            warnings: {
+                invalidDays: "I need a number > 1",
+                invalidMeals: "I need at least 1 meal"
+            },
+            setMeals: {}
         }
     }
 
@@ -57,7 +59,12 @@ export default class PUType extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const days = ReactDOM.findDOMNode(this.refs.days).value;
+        let daysRef = ReactDOM.findDOMNode(this.refs.days);
+        const days = daysRef.value;
+        if (days < 1) {
+            daysRef.placeholder = this.state.warnings.invalidDays;
+            return "input days error";
+        }
         const meals = [];
         for (const meal in this.state.setMeals) {
             if (this.state.setMeals[meal]) {
@@ -65,17 +72,37 @@ export default class PUType extends React.Component {
                 meals.push(meal);
             }
         }
+        console.log("meals length", meals);
+        console.log("setMeals", this.state.setMeals);
+        console.log(meals.length);
+        if (meals.length < 1) {
+            daysRef.value = "";
+            daysRef.placeholder = this.state.warnings.invalidMeals;
+            return "input meals error";
+        }
         this.props.dispatch(setMeals(meals, days));
         browserHistory.push('/plan/search');
     }
 
     handleChange(e) {
         const value = e.target.value;
+        let setMeals = this.state.setMeals;
         console.log(value);
         const checked = ReactDOM.findDOMNode(this.refs[value]).checked;
-        const meals = Object.assign({}, this.state.setMeals);
+        console.log(Object.keys(setMeals).length);
+        let meals = {};
+        if (Object.keys(this.state.setMeals).length == 0) {
+            const mealObjectInit = {
+                breakfast: false,
+                lunch: false,
+                dinner: false
+            };
+            meals = Object.assign({}, mealObjectInit);
+        } else {
+            meals = Object.assign({}, setMeals);
+        }
         meals[value] = checked;
-        this.setState({setMeals: meals})
+        this.setState({setMeals: meals}, console.log(setMeals));
     }
 
     setDate(e) {

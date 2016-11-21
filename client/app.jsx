@@ -2,6 +2,8 @@ import React from 'react';
 import Base from './components/Base.jsx';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 
+// import Map from './components/Experimental Features/Map.jsx';
+
 import Homepage from './components/Homepage.jsx';
 import AppHomepage from './components/AppHomepage.jsx';
 import AppMain from './components/AppMain.jsx';
@@ -23,7 +25,7 @@ export default class App extends React.Component {
         <Provider store={store}>
             <Router history={browserHistory}>
                 <Route path="/" component={Base}>
-                    <Route component={AppHomepage} >
+                    <Route component={AppHomepage}>
                         <IndexRoute component={Homepage} />
                     </Route>
                     <Route component={AppMain} >

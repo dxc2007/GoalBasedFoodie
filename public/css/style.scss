@@ -1,8 +1,14 @@
 $homepage-bg-img: url("../images/table-of-food.jpg");
+$location-form-width: 30vw;
+
+$font-futura: "Futura", Helvetica, sans-serif;
+$font-avenir: Avenir, Helvetica, sans-serif;
+$font-droid-sans: "Droid Sans", Helvetica,sans-serif;
 
 $color-navbar: #ffd839;
 $color-bg: #FFE439;
 $color-main-content: #FFEA64;
+$color-warning: #ee374b;
 
 $color-default-font: #333333;
 $color-dark-gray: #333333;
@@ -11,7 +17,7 @@ $color-near-white: #efefef;
 
 #app {
 	padding: 0 auto;
-	font: 1em "Futura", Helvetica, sans-serif;
+	font: 1em $font-futura;
 	color: $color-default-font;
 	background-color: $color-bg;
 	min-height: 100vh;
@@ -41,8 +47,12 @@ $color-near-white: #efefef;
 }
 
 .navbar-toggle {
-	padding-top: 20px;
-	padding-right: 10px;
+	padding-top: 1.5em;
+	padding-right: 1em;
+}
+
+.navbar-collapse.collapse, .navbar-collapse.collapsing {
+	background-color: $color-navbar;
 }
 
 .navbar-toggle .collapsed:hover {
@@ -92,7 +102,7 @@ form {
 }
 
 #locationForm {
-	min-width: 30vw;
+	min-width: $location-form-width;
 }
 
 .quickfixOptions {
@@ -111,7 +121,7 @@ form {
 	max-height: 100%;
 	text-align: left;
 	font-size: 0.8em;
-	font-family: "Droid Sans", sans-serif;
+	font-family: $font-droid-sans;
 	overflow: auto;
 }
 
@@ -133,4 +143,12 @@ form {
 	overflow: auto;
 	max-height: 100%;
 	background-color: $color-main-content;
+}
+
+footer {
+	text-align: center;
+	a {
+		color: $color-default-font;
+		text-decoration: none;
+	}
 }

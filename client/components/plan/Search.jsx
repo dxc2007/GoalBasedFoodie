@@ -23,6 +23,10 @@ export default class Type extends React.Component {
         this.state = {
             selectedVenues: [],
             allVenues: [],
+            noVenues: false,
+            warnings: {
+                noVenues: "Add at least one venue here",
+            }
         }
     }
 
@@ -86,6 +90,7 @@ export default class Type extends React.Component {
 
         return (
             <Col>
+                {this.state.noVenues? <Button bsSize="small" disabled>{this.state.warnings.noVenues}</Button> : null}
                 {this.state.selectedVenues.map(entry => <Button bsSize="small" key={entry[0].id} disabled>{entry[0].name}</Button>)}
                 <br />
                 <Button  onClick={this.generatePlan.bind(this)} ref="decrement"> I'm ready! </Button>
@@ -121,6 +126,10 @@ export default class Type extends React.Component {
 
     generatePlan(e) {
         e.preventDefault();
+        if (this.state.selectedVenues.length == 0) {
+            this.setState({ noVenues: true });
+            return "noVenues error";
+        }
         this.props.dispatch(setVenues(this.state.selectedVenues));
         browserHistory.push('/plan/results');
     }
@@ -128,6 +137,7 @@ export default class Type extends React.Component {
     addEntry(ref) {
         console.log(ref);
         console.log(this.state.allVenues);
+        this.setState({ noVenues: false });
         const venue = _(this.state.allVenues)
             .filter({ 'id' : ref })
             .value();

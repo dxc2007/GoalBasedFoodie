@@ -22,7 +22,7 @@ export default class Map extends React.Component {
 render() {
   return (
       <div>
-          <input type="text" placeholder="Start typing" ref="locationString" onChange={this.autocompleteDone.bind(this)}></input>
+          <input type="text" placeholder="Start typing" ref="locationString" onChange={this.autocompleteDone.bind(this)} />
           <button label="Get Location" onClick={this.geolocate.bind(this)}/>
         <div style={style} ref="map" />
       </div>
@@ -47,8 +47,11 @@ componentDidMount() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      self.state.map.setCenter(geolocation);
-      self.setMarker(geolocation)
+      self.setState({ map: new google.maps.Map(ReactDOM.findDOMNode(self.refs.map), {
+        center: geolocation,
+        zoom: 13
+      })
+      }, self.setMarker(geolocation));
     });
   }
 }
@@ -76,6 +79,7 @@ componentDidMount() {
   }
 
   setMarker(location) {
+    console.log("Setting pin");
     var marker = new google.maps.Marker({
       position: location,
       map: this.state.map
