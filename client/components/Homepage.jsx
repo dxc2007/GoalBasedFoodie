@@ -22,9 +22,11 @@ export default class Homepage extends React.Component {
             autocomplete: {},
             messages: {geolocating: "Geolocating..."},
             warnings: {
+                default: "Where will your next meal be?",
                 invalidLocation: "Oops... Please select a valid location.",
                 noGeolocator: "Geolocator not available. Please key in manually."
-            }
+            },
+            arbValue: 2
         }
 
     }
@@ -39,7 +41,7 @@ export default class Homepage extends React.Component {
             <Col>
                 <Form id="homepage" className="centerComponent" inline onSubmit={this.handleSubmit.bind(this)}>
                     <FormGroup  bsSize="large">
-                        <FormControl id="locationForm" type="text" placeholder="Where will your next meal be?" ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
+                        <FormControl id="locationForm" type="text" placeholder={this.state.warnings.default} ref="locationString" onChange={this.autocompleteDone.bind(this)}/>
                     </FormGroup>
                     <Button bsStyle="primary" bsSize="large" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
                     {'   '}
@@ -80,7 +82,7 @@ export default class Homepage extends React.Component {
         e.preventDefault();
         const geolocation = this.props.search;
         console.log(ReactDOM.findDOMNode(this.refs.locationString).value);
-        console.log(Object.keys(geolocation).length);
+        console.log(Object.keys(geolocation).length)
         if (Object.keys(geolocation).length == 0) {
             ReactDOM.findDOMNode(this.refs.locationString).placeholder = this.state.warnings.invalidLocation;
         } else {
@@ -98,18 +100,20 @@ export default class Homepage extends React.Component {
             console.log("Raw Coords", coords);
             self.props.dispatch(setCoords(coords));
                 }
-
             )
         }
 
     reverseGeoCode(coords) {
         console.log("Raw Coords", coords);
+        let locationString = ReactDOM.findDOMNode(this.refs.locationString);
         let geocoder = new google.maps.Geocoder;
         let self = this;
         geocoder.geocode({location: coords}, function(results, status) {
             if (status == 'OK') {
                 console.log(results);
-                ReactDOM.findDOMNode(self.refs.locationString).value = results[0]["formatted_address"];
+                locationString.placeholder = self.state.warnings.default;
+                locationString.value = self.state.arbValue;
+                locationString.value = results[0]["formatted_address"];
             } else {
                 console.log(status)
             }

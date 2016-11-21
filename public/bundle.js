@@ -21692,7 +21692,7 @@
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
 	              { eventKey: 1, href: '#' },
-	              'Log In'
+	              'Log In ('
 	            ),
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
@@ -46198,9 +46198,11 @@
 	            autocomplete: {},
 	            messages: { geolocating: "Geolocating..." },
 	            warnings: {
+	                default: "Where will your next meal be?",
 	                invalidLocation: "Oops... Please select a valid location.",
 	                noGeolocator: "Geolocator not available. Please key in manually."
-	            }
+	            },
+	            arbValue: 2
 	        };
 
 	        return _this;
@@ -46224,7 +46226,7 @@
 	                    _react2.default.createElement(
 	                        _reactBootstrap.FormGroup,
 	                        { bsSize: 'large' },
-	                        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'locationForm', type: 'text', placeholder: 'Where will your next meal be?', ref: 'locationString', onChange: this.autocompleteDone.bind(this) })
+	                        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'locationForm', type: 'text', placeholder: this.state.warnings.default, ref: 'locationString', onChange: this.autocompleteDone.bind(this) })
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Button,
@@ -46296,12 +46298,15 @@
 	        key: 'reverseGeoCode',
 	        value: function reverseGeoCode(coords) {
 	            console.log("Raw Coords", coords);
+	            var locationString = _reactDom2.default.findDOMNode(this.refs.locationString);
 	            var geocoder = new google.maps.Geocoder();
 	            var self = this;
 	            geocoder.geocode({ location: coords }, function (results, status) {
 	                if (status == 'OK') {
 	                    console.log(results);
-	                    _reactDom2.default.findDOMNode(self.refs.locationString).value = results[0]["formatted_address"];
+	                    locationString.placeholder = self.state.warnings.default;
+	                    locationString.value = self.state.arbValue;
+	                    locationString.value = results[0]["formatted_address"];
 	                } else {
 	                    console.log(status);
 	                }
@@ -50793,10 +50798,10 @@
 	            return _react2.default.createElement(
 	                'footer',
 	                null,
-	                'By Xiaochen Du | ',
+	                'App by Xiaochen Du | ',
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: 'http://dxc2007.github.io' },
+	                    { target: '_blank', to: 'http://dxc2007.github.io' },
 	                    'Github'
 	                ),
 	                ' | ',
@@ -50805,7 +50810,12 @@
 	                    { to: 'mailto:duxiaochen1996@gmail.com' },
 	                    'Email'
 	                ),
-	                ' | Feedback welcome Pictures credits to'
+	                ' | Feedback welcome | Pictures credits to  ',
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { target: '_blank', to: 'https://unsplash.com/@inayali' },
+	                    'Ali Inay'
+	                )
 	            );
 	        }
 	    }]);
@@ -51522,7 +51532,8 @@
 	                invalidDays: "I need a number > 1",
 	                invalidMeals: "I need at least 1 meal"
 	            },
-	            setMeals: {}
+	            setMeals: {},
+	            arbValue: 2
 	        };
 	        return _this;
 	    }
@@ -51597,6 +51608,7 @@
 	            var daysRef = _reactDom2.default.findDOMNode(this.refs.days);
 	            var days = daysRef.value;
 	            if (days < 1) {
+	                daysRef.value = "";
 	                daysRef.placeholder = this.state.warnings.invalidDays;
 	                return "input days error";
 	            }
@@ -51648,6 +51660,8 @@
 	            console.log(this.state.codes);
 	            var days = this.state.codes[e.target.value].slice(0);
 	            console.log(days);
+	            _reactDom2.default.findDOMNode(this.refs.days).value = this.state.arbValue;
+	            console.log("date field set to space");
 	            _reactDom2.default.findDOMNode(this.refs.days).value = parseInt(days);
 	        }
 	    }]);
@@ -51855,11 +51869,6 @@
 	                        _reactBootstrap.Button,
 	                        { bsStyle: 'danger', bsSize: 'small', onClick: this.callPopular.bind(this) },
 	                        'Popular'
-	                    ),
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { bsStyle: 'success', bsSize: 'small', onClick: this.callMultiple.bind(this) },
-	                        'Cheap'
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Col,

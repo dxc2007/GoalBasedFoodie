@@ -68,6 +68,7 @@ export default class UploadResults extends React.Component {
                                 <td>{day}</td>
                                 {Meals.map(meal =>
                                     <td key={meal+day.toString()}>{this.props.venues[Math.floor(Math.random() * this.props.venues.length)][0].name}</td>
+
                                 )}
                             </tr>)
                         )}

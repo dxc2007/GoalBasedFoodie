@@ -103,7 +103,7 @@ export default class Type extends React.Component {
                 </Form>
                     {'Show: '}
                     <Button bsStyle="danger" bsSize='small' onClick={this.callPopular.bind(this)}>Popular</Button>
-                    <Button bsStyle="success" bsSize='small' onClick={this.callMultiple.bind(this)}>Cheap</Button>
+                    {/*<Button bsStyle="success" bsSize='small' onClick={this.callMultiple.bind(this)}>Cheap</Button>*/}
                     <Col id="searchResults">
                     { _.filter(this.state.allVenues, { display: true})
                         .map(venue =>

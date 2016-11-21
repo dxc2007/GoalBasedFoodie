@@ -29,7 +29,8 @@ export default class PUType extends React.Component {
                 invalidDays: "I need a number > 1",
                 invalidMeals: "I need at least 1 meal"
             },
-            setMeals: {}
+            setMeals: {},
+            arbValue: 2
         }
     }
 
@@ -62,6 +63,7 @@ export default class PUType extends React.Component {
         let daysRef = ReactDOM.findDOMNode(this.refs.days);
         const days = daysRef.value;
         if (days < 1) {
+            daysRef.value = "";
             daysRef.placeholder = this.state.warnings.invalidDays;
             return "input days error";
         }
@@ -111,6 +113,8 @@ export default class PUType extends React.Component {
         console.log(this.state.codes);
         const days = this.state.codes[e.target.value].slice(0);
         console.log(days);
+        ReactDOM.findDOMNode(this.refs.days).value = this.state.arbValue;
+        console.log("date field set to space");
         ReactDOM.findDOMNode(this.refs.days).value = parseInt(days);
     }
 
