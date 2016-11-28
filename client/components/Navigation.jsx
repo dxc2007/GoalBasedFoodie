@@ -13,8 +13,8 @@ export default class Navigation extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">Log In (</NavItem>
-              <NavItem eventKey={2} href="#">About</NavItem>
+              <NavItem eventKey={1} href="#">Access Meal Plans</NavItem>
+              <NavItem eventKey={2} href="#">Motivations</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

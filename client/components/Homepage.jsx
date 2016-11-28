@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import {browserHistory} from 'react-router';
 import {Form, FormGroup,  Col, Button,  FormControl, Glyphicon} from 'react-bootstrap';
 
+import Export from "./Experimental Features/ExportToGoogleCal.jsx";
+
 import {setCoords} from '../actions/fourSquareVenueSearchActions'
 
 @connect((store) => {
@@ -46,6 +48,7 @@ export default class Homepage extends React.Component {
                     <Button bsStyle="primary" bsSize="large" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
                     {'   '}
                     <Button type="submit" bsSize="large">Submit</Button>
+                    <Export props={this.props}/>
                 </Form>
             </Col>
         )

@@ -1,7 +1,7 @@
 import React from 'react';
 import Base from './components/Base.jsx';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
-
+import { syncHistoryWithStore } from 'react-router-redux';
 // import Map from './components/Experimental Features/Map.jsx';
 
 import Homepage from './components/Homepage.jsx';
@@ -19,11 +19,15 @@ import PUResults from './components/plan/Results.jsx';
 import { Provider } from 'react-redux'
 import store from "./store"
 
-export default class App extends React.Component {
-  render() {
+export default function (props = {}) {
+    let history = browserHistory;
+
+    if (props.store) {
+    history = syncHistoryWithStore(browserHistory, props.store);
+    }
+
     return (
-        <Provider store={store}>
-            <Router history={browserHistory}>
+            <Router history={history}>
                 <Route path="/" component={Base}>
                     <Route component={AppHomepage}>
                         <IndexRoute component={Homepage} />
@@ -44,7 +48,5 @@ export default class App extends React.Component {
                     </Route>
                 </Route>
             </Router>
-        </Provider>
     )
-  }
 }

@@ -30,12 +30,13 @@ render() {
 }
 
 componentDidMount() {
-  this.setState({ map: new google.maps.Map(ReactDOM.findDOMNode(this.refs.map), {
+  this.map =  new google.maps.Map(this.refs.map, {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 13
         })
-  }, this.setMarker.bind(this, {lat: -33.8688, lng: 151.2195}));
-  this.setState({ autocomplete: new google.maps.places.Autocomplete(this.refs.locationString) });
+
+  this.setMarker.bind(this, {lat: -33.8688, lng: 151.2195});
+  this.autocomplete = new google.maps.places.Autocomplete(this.refs.locationString);
 }
 
   geolocate(e) {

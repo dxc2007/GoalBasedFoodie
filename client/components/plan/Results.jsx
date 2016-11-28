@@ -54,7 +54,7 @@ export default class UploadResults extends React.Component {
                 <Col className="contentBox">
                     <h3>{this.state.title}</h3>
                     <Button onClick={this.refresh.bind(this)}>Refresh</Button>
-                    <ExportToGoogleCal/>
+                    <ExportToGoogleCal props={this.props}/>
                     <Table id="eatingPlanTable" responsive striped hover>
                         <thead>
                         <tr>

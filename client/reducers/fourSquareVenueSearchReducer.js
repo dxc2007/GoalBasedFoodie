@@ -21,35 +21,39 @@ export default function reducer(state={
 
     switch (action.type) {
       case "SET_COORDS": {
-        return {...state, coords: action.payload}
+        return Object.assign({}, state, {
+          coords: action.payload
+        })
       }
 
       case "SET_CATEGORIES": {
-        return {...state, categories: action.payload}
+        return Object.assign({}, state, {
+          categories: action.payload
+        })
       }
 
       case "SET_PRICE_FILTER": {
-        return {...state, priceFilter: action.payload}
+        return Object,assign({}, state, { priceFilter: action.payload})
       }
 
       case "SET_DISTANCE": {
-        return {...state, distance: action.payload}
+        return Object,assign({}, state, { distance: action.payload})
       }
 
       case "CALL_API_FULFILLED": {
-        return {...state, data: action.payload}
+        return Object,assign({}, state, { data: action.payload})
       }
 
       case "CALL_API_REJECTED": {
-        return {...state, error: action.payload}
+        return Object,assign({}, state, { error: action.payload})
       }
 
       case "MULTIPLE_API_FULFILLED": {
-        return {...state, data: state.data.slice(0).concat(action.payload)}
+        return Object,assign({}, state, { data: state.data.slice(0).concat(action.payload)})
       }
 
       case "MULTIPLE_API_REJECTED": {
-        return {...state, error: action.payload}
+        return Object,assign({}, state, { error: action.payload})
       }
 
     }

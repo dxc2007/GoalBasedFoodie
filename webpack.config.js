@@ -1,4 +1,4 @@
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: './client.js',
@@ -14,7 +14,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ["react", "es2015", "stage-2"],
+        presets: ["react", "es2015", "stage-0"],
         plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
       },
@@ -29,7 +29,7 @@ module.exports = {
     ],
   },
   plugins: [
-      // new ExtractTextPlugin('./css/style.css')
+      new ExtractTextPlugin('./css/style.css')
   ],
   watch: true
 };
