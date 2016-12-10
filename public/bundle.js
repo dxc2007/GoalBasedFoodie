@@ -46609,7 +46609,8 @@
 	                        _reactBootstrap.Button,
 	                        { type: 'submit', bsSize: 'large' },
 	                        'Submit'
-	                    )
+	                    ),
+	                    _react2.default.createElement(ExportToGoogleCal, null)
 	                )
 	            );
 	        }
@@ -51126,14 +51127,18 @@
 	    _createClass(ExportToGoogleCal, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            var _this2 = this;
+
 	            this.setState({ ORIGIN: window.location.origin });
+	            setInterval(function () {
+	                if (_this2.authWindow) {
+	                    console.log(_this2.authWindow.location);
+	                }
+	            }, 1000);
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            if (this.authWindow) {
-	                console.log(this.authWindow);
-	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Button,
 	                { id: 'authorize-button', onClick: this.reqAuth.bind(this) },
@@ -51144,7 +51149,6 @@
 	        key: 'reqAuth',
 	        value: function reqAuth() {
 	            var authorizeCall = 'https://app.cronofy.com/oauth/authorize?response_type=code&client_id=' + this.state.clientId + '&redirect_uri=' + this.state.ORIGIN + this.state.RELATIVE_PATH + '&scope=create_event&state=yepthatsgood';
-
 	            this.authWindow = window.open(authorizeCall, 'authWindow', "addressbar=1,menubar=1,resizable=1,width=400,height=800");
 	            console.log(this.authWindow.location);
 	        }

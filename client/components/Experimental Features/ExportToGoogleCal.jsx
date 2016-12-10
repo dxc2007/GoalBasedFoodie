@@ -16,32 +16,30 @@ export default class ExportToGoogleCal extends React.Component {
             SCOPES: ["https://www.googleapis.com/auth/calendar"],
             clientId: "5J3x2qBTH0_rwLsxhDKN515iJtHGB2J6",
             clientSecret: "VJL5KQXLTl3nj4xYrx-64GElWp5ZO_45VQl003Nu6ToemQo_CUEy0bQJGIMJUI-SaD1raq1BAJ1eeEFb0B9PpQ",
-            title: "TBD"
+            title: "TBD",
         };
         this.authWindow = null
     }
 
     componentDidMount() {
         this.setState({ORIGIN: window.location.origin})
-
+        setInterval(() => {
+            if (this.authWindow) {
+                console.log(this.authWindow.location);
+            }
+        }, 1000)
     }
 
     render () {
-        if (this.authWindow) {
-            console.log(this.authWindow);
-        }
         return (<Button id="authorize-button" onClick={this.reqAuth.bind(this)}>
             {this.state.title}
         </Button>)
-
     }
 
     reqAuth() {
         const authorizeCall = `https://app.cronofy.com/oauth/authorize?response_type=code&client_id=${this.state.clientId}&redirect_uri=${this.state.ORIGIN}${this.state.RELATIVE_PATH}&scope=create_event&state=yepthatsgood`;
-
         this.authWindow = window.open(authorizeCall, 'authWindow', "addressbar=1,menubar=1,resizable=1,width=400,height=800");
         console.log(this.authWindow.location);
-
     }
 
     // reqAccessToken(code) {
