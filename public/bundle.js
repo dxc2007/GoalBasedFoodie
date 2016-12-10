@@ -46609,8 +46609,7 @@
 	                        _reactBootstrap.Button,
 	                        { type: 'submit', bsSize: 'large' },
 	                        'Submit'
-	                    ),
-	                    _react2.default.createElement(ExportToGoogleCal, null)
+	                    )
 	                )
 	            );
 	        }

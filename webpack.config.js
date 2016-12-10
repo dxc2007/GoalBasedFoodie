@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: './client.js',
@@ -29,7 +29,7 @@ module.exports = {
     ],
   },
   plugins: [
-      new ExtractTextPlugin('./css/style.css')
+      // new ExtractTextPlugin('./css/style.css')
   ],
   watch: true
 };
