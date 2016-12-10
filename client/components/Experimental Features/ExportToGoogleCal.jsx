@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
@@ -10,63 +11,61 @@ export default class ExportToGoogleCal extends React.Component {
 
         this.state = {
             CLIENT_ID: '715862145264-4t6m23f5hq0hctg81kmdo2i8fhfv8k1l.apps.googleusercontent.com',
+            ORIGIN: "",
+            RELATIVE_PATH: "/calendar/getaccess",
             SCOPES: ["https://www.googleapis.com/auth/calendar"],
             clientId: "5J3x2qBTH0_rwLsxhDKN515iJtHGB2J6",
             clientSecret: "VJL5KQXLTl3nj4xYrx-64GElWp5ZO_45VQl003Nu6ToemQo_CUEy0bQJGIMJUI-SaD1raq1BAJ1eeEFb0B9PpQ",
             title: "TBD"
         };
+        this.authWindow = null
     }
 
     componentDidMount() {
+        this.setState({ORIGIN: window.location.origin})
 
     }
 
     render () {
-        return <Button id="authorize-button" onClick={this.reqAuth.bind(this)}>
+        if (this.authWindow) {
+            console.log(this.authWindow);
+        }
+        return (<Button id="authorize-button" onClick={this.reqAuth.bind(this)}>
             {this.state.title}
-        </Button>
+        </Button>)
+
     }
 
     reqAuth() {
-        const params = {
-            response_type: "code",
-            client_id: this.state.clientId,
-            redirect_uri: "http://localhost:8080",
-            scope: "create_event",
-            state: "yepthatsgood",
-        };
-        axios.get('https://app.cronofy.com/oauth/authorize', params)
-            .then((response) => {
-            this.reqAccessToken.bind(this, response.code)
-            })
-            .catch((err) => {
-                console.error(err);
-            })
+        const authorizeCall = `https://app.cronofy.com/oauth/authorize?response_type=code&client_id=${this.state.clientId}&redirect_uri=${this.state.ORIGIN}${this.state.RELATIVE_PATH}&scope=create_event&state=yepthatsgood`;
+
+        this.authWindow = window.open(authorizeCall, 'authWindow', "addressbar=1,menubar=1,resizable=1,width=400,height=800");
+        console.log(this.authWindow.location);
 
     }
 
-    reqAccessToken(code) {
-        const body = {
-            client_id: this.state.clientId,
-            client_secret: this.state.clientSecret,
-            grant_type: "authorization_code",
-            code: code,
-            redirect_uri: "http://localhost:8080",
-        };
-        const config = {
-            headers: {
-                "Content-Type": 'application/json; charset=utf-8',
-                Host: "api.cronofy.com",
-            },
-        }
-        axios.post('https://app.cronofy.com/oauth/', body, config)
-            .then((response) => {
-                this.setState({accessToken: response.access_token}, console.log(response.access_token));
-            })
-            .catch((err) => {
-                console.error(err);
-            })
-    }
+    // reqAccessToken(code) {
+    //     const body = {
+    //         client_id: this.state.clientId,
+    //         client_secret: this.state.clientSecret,
+    //         grant_type: "authorization_code",
+    //         code: code,
+    //         redirect_uri: "http://localhost:8080",
+    //     };
+    //     const config = {
+    //         headers: {
+    //             "Content-Type": 'application/json; charset=utf-8',
+    //             Host: "api.cronofy.com",
+    //         },
+    //     }
+    //     axios.post('https://app.cronofy.com/oauth/', body, config)
+    //         .then((response) => {
+    //             this.setState({accessToken: response.access_token}, console.log(response.access_token));
+    //         })
+    //         .catch((err) => {
+    //             console.error(err);
+    //         })
+    // }
 
     /**
      * Check if current user has authorized this application.
@@ -125,7 +124,5 @@ export default class ExportToGoogleCal extends React.Component {
             appendPre('Event created: ' + event.htmlLink);
         });
     }
-
-
 }
 
