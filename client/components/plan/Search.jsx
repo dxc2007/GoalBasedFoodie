@@ -8,6 +8,7 @@ import _ from 'lodash';
 
 import {setVenues} from '../../actions/userActions';
 import {callSearchApi, callPopularApi, callMultipleApi} from '../../actions/fourSquareVenueSearchActions';
+import Foursquare from '../Experimental Features/FoursquareAutoComplete.jsx';
 
 @connect((store) => {
     return {
@@ -93,14 +94,12 @@ export default class Type extends React.Component {
                 {this.state.noVenues? <Button bsSize="small" disabled>{this.state.warnings.noVenues}</Button> : null}
                 {this.state.selectedVenues.map(entry => <Button bsSize="small" key={entry[0].id} disabled>{entry[0].name}</Button>)}
                 <br />
-                <Button  onClick={this.generatePlan.bind(this)} ref="decrement"> I'm ready! </Button>
+                <Button onClick={this.generatePlan.bind(this)} ref="decrement"> I'm ready! </Button>
                 <Col className="contentBox">
                 <Form inline>
                     <FormGroup bsSize='lg'>
-                        <FormControl ref="placeQuery" placeholder="Start typing" />
-                    </FormGroup>
-                    <Button bsSize='lg' bsStyle="primary" onClick={this.search.bind(this)} ref="getPlaces">Search</Button>
-                </Form>
+                        <Foursquare ref="placeQuery" addEntryAutocomplete={this.addEntryAutocomplete.bind(this)} />
+                    </FormGroup></Form>
                     {'Show: '}
                     <Button bsStyle="danger" bsSize='small' onClick={this.callPopular.bind(this)}>Popular</Button>
                     {/*<Button bsStyle="success" bsSize='small' onClick={this.callMultiple.bind(this)}>Cheap</Button>*/}
@@ -160,6 +159,17 @@ export default class Type extends React.Component {
         tempAllVenues[index]["display"] = false;
         this.setState({ allVenues: tempAllVenues},
             console.log(tempAllVenues)
+        );
+    }
+
+    addEntryAutocomplete(venue) {
+        console.log(venue);
+        this.setState({ noVenues: false });
+        let prevVenues = this.state.selectedVenues.slice(0);
+        prevVenues.push(venue);
+        this.setState({ selectedVenues: prevVenues
+            },
+            console.log("after: ", this.state.selectedVenues)
         );
     }
 

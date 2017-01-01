@@ -6,6 +6,7 @@ import {browserHistory} from 'react-router';
 import {Form, FormGroup,  Col, Button,  FormControl, Glyphicon} from 'react-bootstrap';
 
 import {setCoords} from '../actions/fourSquareVenueSearchActions'
+import FoursquareAutoComplete from './Experimental Features/FoursquareAutoComplete.jsx';
 // import ExportToGoogleCal from './Experimental Features/ExportToGoogleCal.jsx'
 
 @connect((store) => {
@@ -47,6 +48,7 @@ export default class Homepage extends React.Component {
                     <Button bsStyle="primary" bsSize="large" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
                     {'   '}
                     <Button type="submit" bsSize="large">Submit</Button>
+                    <FoursquareAutoComplete/>
                     {/*<ExportToGoogleCal/>*/}
                 </Form>
             </Col>
@@ -84,7 +86,7 @@ export default class Homepage extends React.Component {
         e.preventDefault();
         const geolocation = this.props.search;
         console.log(ReactDOM.findDOMNode(this.refs.locationString).value);
-        console.log(Object.keys(geolocation).length)
+        console.log(Object.keys(geolocation).length);
         if (Object.keys(geolocation).length == 0) {
             ReactDOM.findDOMNode(this.refs.locationString).placeholder = this.state.warnings.invalidLocation;
         } else {

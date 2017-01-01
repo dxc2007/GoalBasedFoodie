@@ -1,7 +1,7 @@
 export default function reducer(state={
   data: [],
   error: "",
-  coords: {},
+  coords: {lat: 40.74691379999999, lng: -74.00826410000002},
   limit: 10,
   categories: "",
   query: "",

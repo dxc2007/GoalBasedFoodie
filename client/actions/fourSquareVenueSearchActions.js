@@ -129,5 +129,3 @@ export function setDistance(distance) {
     payload: distance
   }
 }
-
-
