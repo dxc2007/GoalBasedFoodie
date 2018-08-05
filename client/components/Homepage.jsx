@@ -48,8 +48,7 @@ export default class Homepage extends React.Component {
                     <Button bsStyle="primary" bsSize="large" onClick={this.geolocate.bind(this)}><Glyphicon glyph="map-marker" /></Button>
                     {'   '}
                     <Button type="submit" bsSize="large">Submit</Button>
-                    {/*<FoursquareAutoComplete/>*/}
-                    {/*<ExportToGoogleCal/>*/}
+
                 </Form>
             </Col>
         )
